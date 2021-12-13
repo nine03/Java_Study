@@ -80,4 +80,16 @@ public static void main(String[] args){
 
 main()은 반드시 public, static, void 타입으로 선언되어야 하며, 한 클래스에 2개 이상의 main()을 작성하면 안된다.(main()必须被宣布为public、static、void类型，一班不能写2个以上的main()。)
 
+메소드
+
+클래스의 멤버 함수를 자바에서는 메소드(method)라고 부른다. 메소드의 이름은 개발자가 지정하며, 메소드 개수에는 제한이없다.(该类的成员函数在Java中称为方法。方法由开发人员命名，方法的数量没有限制。)
+
+<pre><code>
+public static int sum(int n, int m) { // 매개변수 n, m
+     return n + m; // n과 m의 합 리턴
+}
+</pre></code>
+
+
+
 - 这个项目是我为了重新学习Java而做的项目（이 프로젝트는 내가 Java를 다시 공부하기위해서 만든 프로젝트입니다.）
