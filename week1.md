@@ -38,4 +38,46 @@ Java란 미국 썬 마이크로시스템스(Sun)에서 개발한 객체지향 �
 
 Java Development Kit(JDK)는 썬 마이크로시스템즈에서 만든 자바 소프트웨어 개발 환경이다. 여기에는 자바 가상머신(JVM)과 컴파일러, 디버거, 그리고 자바 애플릿 및 응용프로그램 개발을 위한 도구들이 포함된다.(Java Development Kit(JDK)是Sun Microsystems制造的Java软件开发环境。 其中包括Java虚拟机器(JVM)、编译器、调试器、Java小程序及开发应用程序的工具。)
 
+Java Virtual Machine(JVM)자바번역기라고도 불리는 자바가상기계(JVM)는 자바 바이트 코드와 컴퓨터의 운영 시스템 간에 번역기 역할을 하여 자바로 작성된 응용 프로그램을 윈도나 매킨토시, 유닉스 등에서 사용할 수 있도록 해주는 소프트웨어를 말한다.(Java Virtual Machine(JVM) Java虚拟机器(JVM)也被称为"Java Virtual Machine(JVM)"，是指在Java字节代码和电脑的运营系统之间起到翻译器作用，使Java编写的应用程序在Windows、Macintosh、Unix等软件中得以使用的软件。)
+
+Java Runtime Environment (JRE) 자바 언어로 개발된 소프트웨어를 실행하기 위해 필요한 플랫폼. 자바를 이용해 개발된 소프트웨어는 어떤 플랫폼으로부터도 독립적인 형식(자바 바이트 코드)으로 배포되지만, 이것을 실행하려면 그 플랫폼을 해석할 수 있는 형식(native code)으로 변환해야 한다. 즉, 자바 실행 환경(JRE)은 이 변환과 실행을 행하는 자바 가상 머신과 그 주변의 소프트웨어이다.
+
+Bin 디렉터리에 들어 있는 주요한 개발 소프트웨어.(Bin 目录中的主要开发软件 。)
+
+javac : 자바 컴파일러로 자바 소스를 바이트 코드로 변환(用 Java 编译器将 Java 源代码转换为字节代码)
+
+java : 자바 프로그램 실행기, 자바 가상기계를 작동시켜 자바 프로그램 실행(启动 Java 程序启动器、 Java 虚拟设备运行 Java 程序)
+
+javadoc : 자바 클래스 파일을 압축한 자바 아카이브 파일(.jar) 생성 관리(管理 Java 类文件的 Java 存档(. jar) 创建)
+
+jmod : 자바의 모듈 파일(.jmod)을 만들거나 모듈 파일의 내용 출력(创建 Java 的模块文件(. jmod) 或输出模块文件)
+
+jlink : 응용프로그램에 맞춘 맞춤형(custom) JRE 생성(根据应用程序生成定制( custom) JRE)
+
+jdb : Java 应用程序运行中用于查找错误的调试器(Java 应用程序运行中用于查找错误的调试器)
+
+javap : 클래스 파일의 바이트 코드를 소스와 함께 보여주는 디어셈블러(与源代码一起显示类文件的字节代码的摘要)
+
+클래스 
+
+자바 프로그램의 작성에 있어 가장 기본적이면서도 중요한것은, 클래스를 만들고, 그안에 변수, 상수, 함수(메소드) 등 모든 프로그램 요소를 작성한다는 점이다.(对于Java程序的编写来说，最基本也是最重要的，就是制作档次，并在其中写出变数、常数、函数（方法）等所有程序要素。)
+
+<pre><code>
+public class Hello {
+     ...
+}
+</pre></code>
+
+public은 자바의 접근지정자(access specifier) 로서 다른 모든 클래스에서 클래스 Hello를 자유롭게 사용할 수 있다는 선언이다.(public是爪哇的访问指定者(access specifier)，是可以在其他所有级别自由使用Class Hello的宣言。)
+
+main() 메소드
+
+<pre><code>
+public static void main(String[] args){
+           ...
+}
+</pre></code>
+
+main()은 반드시 public, static, void 타입으로 선언되어야 하며, 한 클래스에 2개 이상의 main()을 작성하면 안된다.(main()必须被宣布为public、static、void类型，一班不能写2个以上的main()。)
+
 - 这个项目是我为了重新学习Java而做的项目（이 프로젝트는 내가 Java를 다시 공부하기위해서 만든 프로젝트입니다.）
