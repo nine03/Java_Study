@@ -115,6 +115,85 @@ if, while, class 등 자바 언어의 키워드는 식별자로 사용할 수 �
 
 식별자의 첫번째 문자로 숫자를 사용할 수 없다. (数字不能用作标识符的第一个字母。)
 
+true, false, null은 자바의 키워드이므로 식별자로 사용할 수 없다. (True、false和null是Java关键字，不能用作标识符。)
 
+'_', '$' 는 식별자의 첫 번째 문자로 사용할 수 있으나, 일반적으로 잘 사용하지 않는다. ('_'和'$'可以用作标识符的第一个字符，但通常不能很好地使用。)
+
+대소문자를 구별한다. (区分小写文字和大文字。)
+
+길이 제한이 없다. (路没有限制。)
+
+ex) 
+
+사용가능한 예 (可用的例子)
+
+<pre><code>
+int name;
+char student_ID; // '_' 사용가능
+void $func() { } // '$' 사용 가능
+class Monster3 { } // 숫자 사용 가능
+int whatYourNameMyNameIsKitae; // 길이 제한 없음
+int barChart; intbarchart; // 대소문자 구분, barChart와 barchart는 다른 이름 
+int 가격; // 한글 식별자 사용 가능
+</pre></code>
+
+사용할 수 없는 예 (不可用的例子)
+
+<pre><code>
+int 3Chapter // 첫번째 문자로 숫자 사용 불가
+class if {} // 자바의 예약어 if 사용 불가
+char false; // 자바의 예약어 false 사용 불가
+void null() // 자바의 예약어 null 사용 불가
+class %calc {} // 특수문자 '$' 사용 불가
+</pre></code>
+
+클래스 이름 
+
+클래스 이름의 첫 번째 문자는 대문자로 시작하고, 여러 단어가 복합되면 각 단어의 첫 번째 문자만 대문자로 표시한다. (类名的第一个字母以大写字母开头，当组合多个单词时，每个单词的第一个字母仅大写。)
+
+<pre><code>
+public class HelloWorld {}
+class AutoVendingMachine {}
+</pre></code>
+
+변수, 메소드 이름
+
+변수와 메소드 이름은 첫 단어는 소문자로 표기하고 이후 각 단어의 첫 번째 문자만 대문자로 표기한다. 이렇게 함으로써, 변수와 클래스를 쉽게 구분할 수 있다. (变量和方法名称在第一个单词中以小写字母书写，然后仅大写每个单词的第一个字母。通过这样做，可以轻松区分变量和类。)
+
+<pre><code>
+int myAge;
+boolean isSingle;
+public int getAge() 
+{
+     return 20;
+}
+</pre></code>
+
+상수 이름 
+
+상수는 이름 전체를 대문자로 표기하도록 귄장한다. (该常量被卷绕，以便整个名称大写。)
+
+자바의 데이터 타입
+
+데이터 타입 (data type 数据类型)
+
+데이터 타입이란 자바에서 다룰 수 있는데 데이터의 종류를 말한다. (数据类型是指可以在Java中处理的数据类型。) 
+
+기본 타입 (basic type 基本类型) : 8개 (8个)
+
+- boolean
+- char
+- byte
+- short
+- int
+- long
+- float
+- double
+
+래퍼런스 타입 (reference type 参考类型) ： 1개 (1个)
+
+- 배열에 대한 레퍼런스 (关于矩阵参考)
+- 클래스(class)에 대한 래퍼런스 (关于类参考)
+- 인터페이스(interface)에 대한 래퍼런스 (关于接口参考)
 
 - 这个项目是我为了重新学习Java而做的项目（이 프로젝트는 내가 Java를 다시 공부하기위해서 만든 프로젝트입니다.）
