@@ -179,7 +179,7 @@ public int getAge()
 
 데이터 타입이란 자바에서 다룰 수 있는데 데이터의 종류를 말한다. (数据类型是指可以在Java中处理的数据类型。) 
 
-기본 타입 (basic type 基本类型) : 8개 (8个)
+### 기본 타입 (basic type 基本类型) : 8개 (8个)
 
 - boolean
 - char
@@ -190,10 +190,12 @@ public int getAge()
 - float
 - double
 
-래퍼런스 타입 (reference type 参考类型) ： 1개 (1个)
+### 래퍼런스 타입 (reference type 参考类型) ： 1개 (1个)
 
 - 배열에 대한 레퍼런스 (关于矩阵参考)
 - 클래스(class)에 대한 래퍼런스 (关于类参考)
 - 인터페이스(interface)에 대한 래퍼런스 (关于接口参考)
+
+
 
 - 这个项目是我为了重新学习Java而做的项目（이 프로젝트는 내가 Java를 다시 공부하기위해서 만든 프로젝트입니다.）
