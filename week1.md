@@ -462,10 +462,42 @@ if ~ else 문 (if ~ else语句)
 if의 조건식이 참인 경우와 거짓인 경우에 각각 실행할 문장을 지시할 수 있다. (如果If的条件表达式为true和false，则可以指示要执行的每个句子。)
 
 <pre><code>
+if ~ else문 문법
 if(조건식) {
    실행 문장1;
 }else {
    실행 문장2;
+}
+</pre></code>
+
+다중 if ~ else 문 (if ~ else if ~ else 语句)
+<pre><code>
+if(조건식 1) {
+    실행 문장1; // 조건식 1이 참인 경우
+}else if(조건식 2) {
+    실행 문장2; // 조건식 2가 참인 경우
+}else if(조건식 m) {
+     .....;  // 조건식 m이 참인 경우
+}else {
+     실행 문장n; // 앞의 모든 조건이 거짓인 경우
+}
+</pre></code>
+
+switch 문 (switch 语句) 
+
+<pre><code>
+switch(식) {
+     case 값1:
+          실행 문장1;
+          break;
+     case 값2:
+          실행 문장2;
+          break;
+     case 값m;
+          실행 문장m;
+          break;
+     default:
+          실행 문장n;
 }
 </pre></code>
 
