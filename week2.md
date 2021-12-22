@@ -97,7 +97,37 @@ intArray[];
 intArray = new int[5];
 int size = intArray.length; // size는 5
 
+for - each 문
 
+for(변수 : 배열레퍼런스) {
+        반복 작업문;
+}
+
+배열 
+ex)
+
+int []n = {1,2,3,4,5};
+int  sum = 0;
+for(int k : n) { // n.length번 반복. k는 n[0], ... , n[4]로 번갈아 반복
+           sum += k;
+}
+System.out.println("합은 " + sum);
+
+ 문자열 배열 
+ ex)
+ 
+ String names[] = {"사과","배","바나나","체리","딸기","포도"};
+ for(String s : names) { // 반복할 때마다 s는 name[0], ... , name[5]로 설정
+           System.out.print(s + " ");
+ }
+ 
+ 문자열 나열 
+ ex)
+ 
+ enum week {월, 화, 수, 목, 금, 토, 일}
+ for(week day : week.values()) { // 반복될 때마다 day는 월, 화, 수, 목, 금, 토, 일로 설정
+           System.out.println(day + "요일");
+ }
 </pre></code>
 
 
