@@ -130,5 +130,69 @@ System.out.println("합은 " + sum);
  }
 </pre></code>
 
+2차원 배열 (二维数组)
 
+2차원 배열의 선언과 생성 (二维数组声明和创建。)
+
+1차원 배열과 마찬가지로 2차원 배열에서도 레퍼런스 변수 선언 후 배열을 생성한다. (像一维数组一样，二维数组在引用变量声明之后生成数组。) 
+
+<pre><code>
+2차원 배열의 레퍼런스 변수 선언방법
+int intArray [][];
+char charArray [][];
+double doubleArray [][];
+
+int [][] intArray;
+char [][] charArray;
+double [][] doubleArray;
+
+intArray = new int [2][5]; // 2행 5열의 2차원 배열 생성
+charArray = new char [5][5]; // 5행 5열의 2차원 배열 생성
+doubleArray = new double [5][2]; // 5행 2열의 2차원 배열 생성 
+
+2차원 배열도 레퍼런스 변수 선언과 배열 생성을 동시에 할 수 있다.
+int intArray [][] = new int [2][5];
+char charArray [][] = new char [5][5];
+double doubleArray [][] = new double [5][2];
+
+2차원 배열의 초기화
+int intArray [][] = {{0,1,2},{3,4,5},{6,7,8}};
+char charArray [][] = {{'a','b','c'},{'d','e','f'}};
+double doubleArray = {{0.01,0.02},{0.03,.0.04}};
+
+비정방형 배열
+int i [][]; // 2차원 배열의 레퍼런스 변수 i 선언
+i = new int [4][]; // 각 행을 가리키는 레퍼런스 배열 생성
+i[0] = new int [1]; // 첫째 행에 1개 크기의 배열 생성
+i[1] = new int [2]; // 둘째 행에 2개 크기의 배열 생성
+i[2] = new int [3]; // 셋째 행에 3개 크기의 배열 생성
+i[3] = new int [4]; // 넷째 행에 4개 크기의 배열 생성
+</pre></code>
+
+메소드에서 배열 리턴
+
+메소드에서 어떤 배열이든지 리턴하면, 배열 공간 전체가 아니라 배열에 대한 레퍼런스만 리턴된다.
+<pre><code>
+int[] makeArray() {
+      int temp[] = new int[4];
+      return temp;
+}
+
+int : 리턴 타입
+makeArray : 메소드 이름
+temp : 배열 리턴
+
+int [] intArray; // makeArray()의 리턴 타입과 동일한 타입 선언
+intArray = makeArray(); // makeArray() 메소드가 리턴하는 배열 받음
+</pre></code>
+
+예외처리 (异常)
+자바에서 오동작이나 결과에 악영향을 미칠 수 있는 실행 중 발생한 오류를 예외라고한다. (异常是在执行过程中发生的错误，可能会对Java中的故障或结果产生不利影响。)
+<pre><code>
+실행 중에 예외가 발생하는 경우
+정수를 0으로 나누는 경우
+배열의 크기보다 큰 인덱스로 배열의 원소를 접근하는 경우
+존재하지 않는 파일을 읽으려고 하는 경우
+정수 입력을 기다리는 코드가 실행되고 있을 때, 사용자가 문자를 입력한 경우
+</pre></code>
 - 这个项目是我为了重新学习Java而做的项目（이 프로젝트는 내가 Java를 다시 공부하기위해서 만든 프로젝트입니다.）
