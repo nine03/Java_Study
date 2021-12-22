@@ -139,4 +139,16 @@ public double getArea() { // 원의 면적 계산 메소드
 }
 </pre></code>
 
+new 연산자와 객체 생성, 그리고 레퍼런스 변수
+<pre><code>
+public static void main(Stringv args[]) {
+    Circle pizza; // Circle 객체에 대한 레퍼런스 변수 pizza  선언
+    pizza = new Circle(); // Circle 객체 생성
+    
+    pizza.radius = 10; //  radius 필드에 10 저장
+    pizza.name = "자바피자"; // name 필드에 "자바피자" 저장
+    double area = pizza.getArea(); // pizza 객체의 면적 알아내기
+}
+</pre></code>
+
 - 这个项目是我为了重新学习Java而做的项目（이 프로젝트는 내가 Java를 다시 공부하기위해서 만든 프로젝트입니다.）
