@@ -188,6 +188,7 @@ intArray = makeArray(); // makeArray() 메소드가 리턴하는 배열 받음
 
 예외처리 (异常)
 자바에서 오동작이나 결과에 악영향을 미칠 수 있는 실행 중 발생한 오류를 예외라고한다. (异常是在执行过程中发生的错误，可能会对Java中的故障或结果产生不利影响。)
+
 <pre><code>
 실행 중에 예외가 발생하는 경우
 정수를 0으로 나누는 경우
@@ -195,4 +196,41 @@ intArray = makeArray(); // makeArray() 메소드가 리턴하는 배열 받음
 존재하지 않는 파일을 읽으려고 하는 경우
 정수 입력을 기다리는 코드가 실행되고 있을 때, 사용자가 문자를 입력한 경우
 </pre></code>
+
+try - catch - finally 문 (try - catch - finally 语句)
+
+<pre><code>
+try - catch - finally 문 문법
+try {
+     예외가 발생할 가능성이 있는 실행문(try 블록)
+} catch(처리할 예외 타입 선언) {
+      예외 처리문(catch 블록)
+} finally {
+      예외 발생 여부와 상관없이 무조건 실행되는 문장(finally 블록)
+}
+
+자바의 예외 클래스
+예외 타입(예외 클래스)               예외 발생 경우                                   패키지
+ArithmeticException                 정수를 0으로 나눌때 발생                        java.lang
+NullPointerException                null 레퍼런스를 참조할 때 발생                  java.lang
+ClassCastException                  변환할 수 없는 타입으로 객체를 변환할 때 발생    java.lang
+OutOfMemoryError                    메모리가 부족한 경우 발생                       java.lang
+ArrayIndexOutOfBoundsException      배열의 범위를 벗어난 접근 시 발생               java.lang
+IllegalArgumentException            잘못된 인자 전달 시 발생                        java.lang
+IOException                         입출력 동작 실패 또는 인터럽트 시 발생          java.io
+NumberFormatException               문자열이 나타태는 숫자와 일치하지 않는 
+                                    타입의 숫자로 변환시 발생                       java.util
+InputMismatchException              Scanner 클래스의 nextInt()를 호출하여 정수로
+                                    입력받고자 하였지만, 사용자가 'a'등과 같이
+                                    문자를 입력한 경우
+
+int intArray [] = new int[5]; // 인덱스는 0 ~ 4 까지 가능
+try {
+     intArray[3] = 2;  // 예외 발생하지 않음
+     intArray[6] = 5;  // 예외 발생
+} catch(ArratIndexOutOfBoundsException e) { // 객체 e에 예외 정보가 넘어옴
+      System.out.println("배열의 범위를 초과하여 원소를 접근하였습니다.");
+}
+</pre></code>
+
 - 这个项目是我为了重新学习Java而做的项目（이 프로젝트는 내가 Java를 다시 공부하기위해서 만든 프로젝트입니다.）
