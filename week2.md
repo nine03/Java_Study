@@ -77,5 +77,28 @@ intArray : 배열에 대한 레퍼런스 변수
 new : 배열 생성
 int : 배열 타입
 [5] : 원소 
+
+배열 초기화
+int intArray[] = {4, 3, 2, 1, 0};
+double doubleArray[] = {0.01, 0.02, 0.03, 0.04};
+
+배열 인덱스와 배열 원소 접근
+int intArray[] = new int[5]; // 원소가 5개인 배열 생성. 인덱스는 0 ~ 4까지 가능
+int intArray[0] = 5;  // 원소 0에 5저장
+int intArray[3] = 6;  // 원소 3에 6저장
+int n = intArray[3];  // 원소 3의 값을 읽어 n에 저장. n은 6이된다.
+
+레퍼런스 치환과 배열 공유
+int intArray[] = new int[5];
+int myArray[] = intArray // 레퍼런스 치환. myArray는 intArray와 동일한 배열 참조
+
+배열의 크기, length 필드
+intArray[];
+intArray = new int[5];
+int size = intArray.length; // size는 5
+
+
 </pre></code>
+
+
 - 这个项目是我为了重新学习Java而做的项目（이 프로젝트는 내가 Java를 다시 공부하기위해서 만든 프로젝트입니다.）
