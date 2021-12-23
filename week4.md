@@ -291,6 +291,123 @@ abstract class MyComponent { // 추상 클래스 선언
 
 추상 클래스의 상속
 
-추상 클래스를 단순히 상속 받는 서브 클래스는 
+추상 클래스를 단순히 상속 받는 서브 클래스는 추상 클래스가 된다. 추상 클래스의 추상 메소드를 그대로 상속받기 때문이다. 그러므로 서브 클래스에 abstract를 붙여 부상 클래스임을 명시해야 컴파일 오류가 발생하지 않는다.
+<pre><code>
+abstract class Shape { // 추상 클래스
+    public Shape() { }
+    public void paint() { draw(); } 
+    abstract public void draw(); // 추상 메소드
+}
+abstract class Line extends Shape { // 추상 클래스. draw()를 상속받기 때문
+    public String toString() { return "Line"; }
+}
+</pre></code>
+
+추상 클래스의 구현
+
+추상 클래스의 구현이란 슈퍼 클래스에 선언된 모든 추상 메소드를 서브 클래스에서 오버라이딩하여 실행 가능한 코드로 구현하는 것을 말한다.
+
+추상 클래스는 추상 메소드를 통해 서브 클래스가 구현할 메소드를 명료하게 알려주는 인터페이스의 역할을 하고, 서브 클래스는 추상 메소드를 목적에 맞게 구현하는 다형성을 실현할 수 있다.
+
+인터페이스(interface)
+
+인터페이스는 RS- 232 인터페이스, USB 인터페이스, SATA 인터페이스 하드디스크 등 컴퓨터 주변 장치에서 많이 사용하는 용어이다.
+
+자바의 인터페이스
+
+자바의 인터페이스는 interface 키워드를 사용하여 클래스를 선언하듯이 선언한다.
+
+<pre><code>
+interface PhoneInterface { // 인터페이스 선언
+    public static final in TIMEOUT = 10000; // 상수 필드, public static final 생략 가능
+    public abstract void sendCall(); // 추상 메소드, public abstract 생략 가능
+    public abstract void receiveCall(); // 추상 메소드, public abstract 생략 가능
+    public default void printLogo() { // default 메소드, public 생략 가능
+        System.out.println("** phone **");
+        }; // 디폴트 메소드
+    }
+</pre></code>
+
+인터페이스 구성
+
+필드(멤버 변수)를 만들 수 없다.
+
+- 상수와 추상 메소드
+
+- default 메소드
+
+- private 메소드
+
+- static 메소드
+
+추상 메소드는 public abstract로 정해져 있으며, 생략될 수 있고, 다른 접근 지정으로 지정될 수 없다. default, private, static 메소드들은 모두 인터페이스 내에 코드가 작성되어 있어야 한다. default 메소드의 접근 지정은 public으로 고정되어 있다. private 메소드는 인터페이스 내에서만 호출 가능하다. static 메소드의 경우 접근 지정이 생략되면 public이며, private으로 지정될 수 있다.
+
+인터페이스는 객체를 생성할 수 없다
+인터페이스에 구현되지 않은 추상 메소드를 가질 수 있기 때문에 객체를 생성할 수 없다.
+
+인터페이스 타입의 레퍼런스 변수는 선언 가능하다
+<pre><code>
+PhoneInterface galaxy; // galaxy는 인터페이스에 대한 레퍼런스 변수 
+</pre></code>
+
+인터페이스끼리 상속된다
+인터페이스는 다른 인터페이스를 상속할 수 있다.
+
+인터페이스를 상속받아 클래스를 작성하면 인터페이스의 모든 추상 메소드를 구현하여야 한다
+자바의 인터페이스는 상속받을 서브 클래스에게 구현할 메소드들의 원형을 모두 알려주어, 클래스가 스스로 목적에 맞게 메소드를 구현하도록 하는 것이 목적이다.
+
+인터페이스 구현 
+
+인터페이스 구현이란 implements 키워드를 사용하여 인터페이스의 모든 추상 메소드를 구현한 클래스를 작성하는 것을 말한다.
+
+<pre><code>
+class SamsungPhone implements PhoneInterface { // 인터페이스 구현
+        // PhoneInterface의 모든 추상 메소드 구현
+        public void sendCall() { System.out.println("띠리리리링"); }
+        public void receiveCall() { System.out.println("전화가 왔습니다."); }
+        // 메소드 추가 작성
+        public void flash() { System.out.println("전화기에 불이 켜졌습니다."); }
+}
+</pre></code>
+
+인터페이스 상속 
+
+클래스 인터페이스를 상속받을 수 없고, 인터페이스끼리만 상속이 가능하다. 상속을 통해 기존 인터페이스에 새로운 규격을 추가한 새로운 인터페이스를 만들 수 있으며, 인터페이스의 상속은 extends 키워들 사용한다.
+
+인터페이스의 다중 상속
+
+<pre><code>
+interface MusicPhoneInterface extends MobilePhoneInterface, MP3Interface { // 다중 상속
+    void playMP3RingTone(); // 추상 메소드
+}
+</pre></code>
+
+다중 인터페이스 구현
+클래스는 하나 이상의 인터페이스를 구현할 수 있다. 이 경우 콤마로 각 인터페이스를 구분하여 나열하며, 각 인터페이스에 선언된 모든 추상 메소드를 구현하여야 한다.
+
+클래스 상속과 함께 인터페이스 구현
+클래스를 상속 받으면서 동시에 인터페이스를 구현할 수 있다.
+
+인터페이스와 추상 클래스는 유사하다 
+- 객체를 생성할 수 없고, 상속을 위한 슈퍼 클래스로만 사용된다.
+- 클래스의 다형성을 실현하기 위한 목적이다.
+
+추상 클래스 목적
+
+추상 클래스는 서브 클래스에서 필요로 하는 대부분의 기능을 구현하여 두고 서브 클래스가 상속받아 활용할 수 있도록 하되, 서브 클래스에서 구현 할 수밖에 없는 기능만 추상 메소드로 선언하여, 서브 클래스에서 구현하도록 하는 목적(다형성)
+
+추상 클래스 구성
+- 추상 메소드와 일반 메소드 모두 포함
+- 상수, 변수 필드 모두 포함
+
+인터페이스 목적 
+
+인터페이스는 객체의 기능을 모두 공개한 표준화 문서와 같은 것으로, 개발자에게 인터페이스를 상속받는 클래스의 목적에 따라 인터페이스의 모든 추상 메소드를 만들도록 하는 목적(다형성)
+
+인터페이스 구성
+- 변수 필드(멤버 변수)는 포함하지 않음
+- 상수, 추상 메소드, 일반 메소드, default 메소드, static 메소드 모두 포함 
+- protected 접근 지정 선언 불가
+- 다중 상속 지원
 
 - 这个项目是我为了重新学习Java而做的项目（이 프로젝트는 내가 Java를 다시 공부하기위해서 만든 프로젝트입니다.）
