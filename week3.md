@@ -477,5 +477,83 @@ static int m; // static 필드
 static void f() {...} // static 메소드 
 </pre></code>
 
+non - static 멤베와 static 멤버의 차이점 
+
+<pre><code>
+non - static 선언 
+class Sample {
+    int n;
+    void g() {...}
+}
+
+non - staticv 공간적 특성
+멤버는 객체마다 별도 존재
+- 인스턴스 멤버라고 부른다
+
+non - static 시각적 특성
+객체 생성 시에 멤버 생성됨
+- 객체가 생길 때 멤버도 생성
+- 객체 생성 후 멤버 사용 가능
+- 객체가 사라지면 멤버도 사라짐
+
+non - static 공유의 특징 
+공유되지 않음
+- 멤버는 객체 내에 각각 공간 유지 
+
+static 선언 
+class Sample {
+    static int m;
+    static voide g() {...]
+}
+
+static 공간적 특성 
+멤버는 클래스당 하나 생성
+- 멤버는 객체 내부가 아닌 별도의 공간(클래스 코드가 적재되는 메모리)에 생성
+- 클래스 멤버라고 부른다.
+
+static 시각적 특성
+클래스 로딩 시에 멤버 생성
+- 객체가 생기기 전에 이미 생성
+- 객체가 생기기 전에도 사용 가능
+- 객체가 사라져도 멤버는 사라지지 않는다.
+- 멤버는 프로그램이 종료될 때 사라짐
+
+static 공유의 특성 
+동일한 클래스의 모든 객체들에 의해 공유된다.
+</pre></code>
+
+static 멤버의 생성
+<pre><code>
+StaticSample s1, s2;
+
+s1 = new StaticSample();
+s2 = new StaticSample();
+</pre></code>
+
+static 멤버 접근 
+<pre><code>
+객체.static필드
+객체.static메소드
+</pre></code>
+
+static 메소드의 제약 조건 
+static 메소드는, 객체 없이도 존재하기 떄문에, 객체와 함께 생성되는 non - static 멤버를 사용할 수 없고 static 멤버들만 사용 가능하다. 반면 non - static 메소드는 static 멤버들을 사용할 수있다.
+
+<pre><code>
+class StaticMethod {
+    int n;
+    void f1(int x) {n = x;} // 정상
+    void f2(int x) {m = x;} // 정상
+}
+</pre></code>
+
+final 클래스
+final이 클래스 이름 앞에 사용되면 클래스를 상속받을 수 없음을 지정한다.
+
+final 메소드 
+final로 메소드를 선언하면 오버라이딩할 수 없는 메소드임을 선언한다. 자식 클래스가 부모 클래스의 특정 메소드를 오버라이딩하지 못하게 하고 무조건 상속받아 사용할 수 있다.
+
+final 필드
+final로 필드를 선언하면 필드는 상수가 된다.
 
 - 这个项目是我为了重新学习Java而做的项目（이 프로젝트는 내가 Java를 다시 공부하기위해서 만든 프로젝트입니다.）
