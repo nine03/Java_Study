@@ -199,7 +199,7 @@ a.paint(); // paint()는 Shape의 draw()를 호출한다.
 super 키워드
 <pre><code>
 super.슈퍼클래스의멤버
-</prt></code>
+</pre></code>
 
 super는 자바 컴파일러에 의해 지원되는 것으로 슈퍼 클래스에 대한 레퍼런스이다.
 
