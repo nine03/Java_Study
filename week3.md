@@ -151,4 +151,105 @@ public static void main(Stringv args[]) {
 }
 </pre></code>
 
+레퍼런스 변수 선언 
+<pre><code>
+Circle pizza; // 레퍼런스 변수 pizza 선언
+</pre></code>
+
+객체 생성 new 연산자
+<pre><code>
+pizza = new Circle();
+Circle 타입 크기의 메모리 할당
+Circle() 생성자 코드 실행
+Circle pizza = new Circle();
+</pre></code>
+
+객체 멤버 접근
+<pre><code>
+객체 레퍼런스.멤버
+ex) 
+pizza.radius = 10;
+int r = pizza.radius;
+double area = pizza.get();
+</pre></code>
+
+생성자(Constructor)
+
+생성자란 객체의 생성과 동시에 자동으로 호출되는 메소드이다. 내부나 외부 클래스에서 객체를 생성할때 new 연산자와 함께 사용되며 객체의 초기화를 담당한다.
+
+New 연산자에 의해 생성자가 성공적으로 실행되면 Heap 영역에서 객체가 생성되고 객체의 주소는 리턴되어 클래스 변수에 저장되어 객체에 접근할때 이용한다. 인스턴스 변수의 초기화 작업에 주로 사용되며, 인스턴스 생성 시 실행되어야 할 작업을 위해서도 사용된다.
+
+생성자의 특징
+
+생성자의 이름은 클래스의 이름과 동일해야한다. 
+생성자는 리턴타입(return type)이 없다.
+생성자는 객체의 메모리가 생성된 직후에 호출된다.
+생성자는 초기화를 위한 데이터를 인수로 전달 받을 수 있다.
+생성자도 메소드 오버로딩이 가능하다.
+
+생성자의 호출
+
+New 키워드를 사용하여 객체를 생성할때 자동으로 생성자가 호출된다. 
+
+기본 생성자(Default Constructor)
+
+기본 생성자는 매개변수를 하나도 가지지 않고, 아무런 명령어도 포함하지 않는다. 자바 컴파일러는 컴파일 시 클래스에 생성자가 하나도 정의되어 있지 않을 경우에만 자동으로 기본 생성자를 추가한다.
+
+생성자 오버로딩(Constructor Overloading)
+
+생성자도 오버로딩할 수 있다. 생성자 오버로딩은 매개 변수를 변경하여 생성자를 여러개 선언하는것을 오버로딩이라고 한다.
+
+외부에서 제공되는 다양한 데이터를 이용해서 객체를 초기화 하기 위해서는 생성자도 다양화 되어야 하기 때문에 생성자 오버로딩을 통해 매개변수를 달리하여 생성자를 여러개 선언하여 다양화 할 수 있다.
+
+생성자의 이름은 클래스 이름과 동일하다
+<pre><code>
+public class Circle {
+public Circle(int r, String n) { ... } // 생성자
+}
+</pre></code>
+
+생성자는 여러개 오버로딩 할 수 있다
+<pre><code>
+public class Circle {
+public Circle() { ... } // 매개 변수 없는 생성자
+public Circle(int r, String n) { ... } // 2개의 매개 변수를 가진 생성자
+}
+</pre></code>
+
+생성자는 new를 통해 객체를 생성할 때 한번만 호출된다
+<pre><code>
+Circle pizza = new Circle(10, "자바피자"); // 생성자 Circle(int r, String n) 호출
+Circle donut = new Circle(); // 생성자 Circle() 호출
+</pre></code>
+
+생성자에 리턴 타입을 지정할 수 없다
+<pre><code>
+public Circle() { ... } // 리턴 타입 선언하지 않음
+</pre></code>
+
+생성자의 목적은 객체가 생성될 때, 필요한 초기 작업을 위함이다
+<pre><code>
+Circle pizza = new Circle(10,"자바피자"); // 생성자 Circle(int r, Sting n)호출
+</pre></code>
+
+기본 생성자
+<pre><code>
+class Circle {
+    public Circle() {} // 기본 생성자. 매개변수 없고 아무 일 없이 단순 리턴
+}
+</pre></code>
+
+기본 생성자가 자동으로 생성되는 경우
+<pre><code>
+Circle pizza = new Circle(); // 생성자 Circle() 호출
+</pre></code>
+
+기본 생성자가 자동으로 생성되지 않은 경우
+<pre><code>
+Circle pizza = new Circle(10);  // Circle(int r) 호출
+public Circle(int r) {
+    radius = r;
+}
+</pre></code>
+
 - 这个项目是我为了重新学习Java而做的项目（이 프로젝트는 내가 Java를 다시 공부하기위해서 만든 프로젝트입니다.）
