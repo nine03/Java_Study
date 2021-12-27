@@ -70,4 +70,111 @@ void notify() : 현 객체에 대해 대기하고 있는 하나의 스레드를 
 void notifyAll() : 현 객체에 대해 대기하고 있는 모든 스레드를 깨운다.
 void wait() : 다른 스레드가 깨울 때까지 현재 스레드를 대기하게 한다.
 </pre></code>
+
+ex)
+<pre><code>
+class Point {
+  private int x,y; 
+  public Point(int x,int y) {
+      this.x = x;
+      this.y = y;
+  }
+}
+
+public class ObjectPropertyEx {
+  public static void print(Object obj) {
+    System.out.println(obj.getClass().getName());  // 클래스 이름 
+    System.out.println(obj.hashCode()); // 해시 코드 값
+    System.out.println(obj.toString()); // 객체를 문자열로 만들어 출력 
+    System.out.println(obj); // 객체 출력
+  }
+  
+  public static void main(String[] args) {
+    Point p = new Point(2,3);
+    print(p);
+  }
+}
+</pre></code>
+
+getClass()
+
+Class 클래스는 주어진 객체의 클래스에 관한 정보를 담는 클래스이다. Object의 getClass() 메소드를 호출하면 바로 이 Class 객체를 리턴하는데, 다음과 같이 Class객체의 getName() 메소드를 이용하면 obj 레퍼런스가 가리키는 객체의 클래스 타입을 알아 낼수있다.
+
+<pre><code>
+System.out.println(obj.getClass().getName());
+</pre></code>
+
+hashCode()
+
+객체는 생성될 때 객체를 유일하게 구분할 수 있는 정수 id 값이 할당된다. 이 값을 해시코드라고 부르고, Object의 hashCode() 메소드는 객체 안에 담겨진 해시코드 값을 리턴한다.
+
+toString()
+
+Object의 toString()은 객체를 문자열로 변환하여 리턴하는 메소드이다. 
+
+<pre><code>
+Point a = new Point(2,3);
+System.out.println(a.toString());
+
+클래스에 toString() 만들기
+public String toString(); // public으로 선언해야 함에 특히 주의
+</pre></code>
+
+== 연산자 
+
+ex)
+
+<pre><code>
+Point a = new Point(2,3);
+Point a = new Point(2,3);
+Point c = a; 
+if(a == b) // false 
+        System.out.println("a == b");
+if(a == c) // true
+        System.out.println("a == c");
+</pre></code>
+
+boolean equals(Object obj)
+
+ex)
+
+<pre><code>
+String a = new String("Hello");
+String b = new String("Hello");
+if(a == b) // false
+  System.out.println("a == b");
+if(a.equals(b)) // true
+  System.out.println("a와 b는 둘 다 Hello입니다.");
+</pre></code>
+
+Wrapper 클래스
+
+int, char, double 등 8개의 기본 타입을 객체로 다루기 위해 JDK에 만들어진 8개 클래스를 통칭하여 Wrapper 클래스라한다. Byte, short, Integet, Long, Character, Double, Float, Boolean 클래스가 기본 타입에 해당되는 값을 객체로 다룰 수 있게 하는 Wrapper클래스이다. Wrapper 클래스들은 java.lang패키지에서 제공한다.
+
+Wrapper 클래스의 객체 생성
+<pre><code>
+Integer i = Integer.valueOf(10);  // 정수 10개의 객체화
+Character c = Character.valueOf('c');  // 문자 'c'의 객체화 
+Double d = Double.valueOf(3.14);
+Boolean b = Boolean.valueOf(true);
+</pre></code>
+
+Wrapper 클래스의 활용 
+<pre><code>
+static int bitCount(int i) : 정수 i의 이진수 표현에서  1의 개수 리턴 
+float flatValue() : float 타입으로 값 리턴 
+int intValue() : int 타입으로 값 리턴
+long longValue() : long 타입으로 값 리턴
+short shortValue() : short 타입으로 값 리턴 
+static int parseInt(String s) : 문자열 s를 10진 정수로 변환한 값 리턴
+static int parseInt(String s, int radix) : 문자열 s를 지정된 진법의 정수로 변환한 값 리턴
+static String toBinaryString(int i) : 정수 i를 이진수 표현으로 변환한 문자열 리턴
+static String toHexString(int i) : 정수 i를 16진수 표현으로 변환한 문자열 리턴
+static String toOctalString(int i) : 정수 i를 8진수 표현으로 변환한 문자열 리턴
+static String toString(int i) : 정수 i를 문자열로 변환하여 리턴
+static Integer ValueOf(int i) : 정수 i를 담은 Integer 객체 리턴
+static Integer valueOf(String s) : 문자열 s를 정수로 변환하여 담고 있는 Integer 객체 리턴 
+</pre></code>
+
+
 - 这个项目是我为了重新学习Java而做的项目（이 프로젝트는 내가 Java를 다시 공부하기위해서 만든 프로젝트입니다.）
