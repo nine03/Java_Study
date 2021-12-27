@@ -176,5 +176,49 @@ static Integer ValueOf(int i) : 정수 i를 담은 Integer 객체 리턴
 static Integer valueOf(String s) : 문자열 s를 정수로 변환하여 담고 있는 Integer 객체 리턴 
 </pre></code>
 
+Wrapper 객체에 들어 있는 기본 타입 값 알아내기 
+
+<pre><code>
+Integer i = Integer.valueOf(10);
+int ii = i.intValue(); // ii = 10
+
+Double d = Double.valueOf(3.14);
+double dd = d.doubleValue(); // dd = 3.14
+
+Boolean b = Boolean.valueOf(true);
+boolean bb = b.booleanValue(); // bb = true
+</pre></code>
+
+문자열을 기본 타입으로 변환 
+
+<pre><code>
+int i = Integer.parseInt("123")  // i = 123
+boolean b = Boolean.parseBoolean("true");  // b = true
+double d = Double.parseDouble("3.14");  // d = 3.14
+</pre></code>
+
+parseInt(), parseBoolean(), parseDouble() 메소드는 모두 static 타입이므로 Wrapper 클래스의 이름으로 바로 메소드를 호출한다.
+
+박싱(boxing)
+
+박싱은 int나 float같은 값을 객체 안에 넣어주는 일이다.
+
+언박싱(unboxing)
+
+언박싱은 이렇게 넣었던 int나 float값을 다시 빼내는 일을 뜻한다.
+
+자동 박싱(auto boxing)
+
+자동 박싱은 Java 컴파일러가 기본 유형과 해당 객체 래퍼 클래스간에 수행하는 자동 변환이다.  
+
+자동 언박싱(auto unboxing)
+
+자동 언박싱은 래퍼 클래스 객체를 다시 원시 유형으로 변환하는 자동 박싱과 반대이다. 이것은 JVM에 의해 자동으로 수행되므로 특정 작업에 래퍼 클래스를 사용한 다음 기본 형식으로 인해 처리 속도가 빨라지므로 기본 형식으로 다시 변환 할 수 있다.
+
+<pre><code>
+Integer ten = 10; // 자동 박싱. Integer ten = Integer.valueOf(10); 로 자동 처리된다.
+int n = ten;  // 자동 언박싱. int n = ten.intValue();로 자동처리된다.
+</pre></code>
+
 
 - 这个项目是我为了重新学习Java而做的项目（이 프로젝트는 내가 Java를 다시 공부하기위해서 만든 프로젝트입니다.）
