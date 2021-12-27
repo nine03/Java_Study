@@ -422,6 +422,7 @@ interface MusicPhoneInterface extends MobilePhoneInterface, MP3Interface { // �
 - 다중 상속 지원
 
 MVC 패턴 
+
 모델-뷰-컨트롤러(Model-View-Controller)는 소프트웨어 공학에서 사용되는 소프트웨어 디자인 패턴이다. 이 패턴을 성공적으로 사용하면, 사용자 인터페이스로부터 비즈니스 로직을 분리하여 애플리케이션의 시각적 요소나 그 이면에서 실행되는 비즈니스 로직을 서로 영향없이 쉽게 고칠 수 있는 어플리케이션을 만들 수 있다.
 
 ![1](https://user-images.githubusercontent.com/60682087/147466386-a95498a7-5ae5-47d6-aac5-fff79a1754c7.png)
