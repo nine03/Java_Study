@@ -345,4 +345,102 @@ void setLength(int newLength) : 스트링 버퍼 내 문자열 길이를 newLeng
 </pre></code>
 
 StringTokenizer 클래스 
+
+StringTokenizer 클래스는 java.util 패키지를 포함되어 있으며, 하나의 문자열을 여러개의 문자열로 분리하기 위해 사용된다. 문자열을 분리할때 사용되는 기준 문자를 구분문자(delimiter)라고 하고, 구분 문자로 분리된 문자열을 토큰(token)이라고한다. 
+
+<pre><code>
+String query = "name=kitae&addr=seoul&age=21";
+StringTokenizer st = new StringTokenizer(query,"&");
+</pre></code>
+
+토큰을 하나씩 얻기 위한방법
+
+<pre><code>
+int count = st.countTokens();
+String token = st.nextToken();
+</pre></code>
+
+StringTokenizer 클래스 생성자
+
+<pre><code>
+StringTokenizer(String str) : str 스트링의 각 문자를 구분 문자로 문자열을 분리하는 스트링 토크나이저 생성 
+StringTokenizer(String str, String delim) : str 스트링과 delim 구분 문자로 문자열을 분리하는 스트링 토크나이저 생성  
+StringTokenizer(String str, String delim, boolean returnDlims) : str 스트링과 delim 구분 문자로 문자열을 분리하는 스트링 토크나이저 생성. returnDelims가 true이면 delim이 포함된 문자도 토큰에 포함된다.
+int countTokens() : 스트링 토크나이저가 분리한 토큰의 개수 리턴 
+boolean hasMoreTokens() : 스트링 토큰나이저에 다음 토큰이 있으면 true 리턴
+String nextToken() : 스트링 토크나이저에 들어 있는 다음 토큰 리턴 
+</pre></code>
+
+Math() 클래스 
+
+Math 클래스는 java.lang 패키지에 포함되어 있으며 기본적인 산술 연산을 제공한다. 모든 멤버 메소드는 static 타입이다. 
+
+<pre><code>
+double d = Math.random();
+double pi = Math.PI(); // 3.141592 원주율 
+</pre><code>
+
+Math 클래스의 주요 메소드 
+
+<pre><code>
+static double abs(double a) : 실수 a의 절대값 리턴
+static double cos(double a) : 실수 a의 cosine값 리턴 
+static double sin(double a) : 실수 a의 sine값 리턴 
+static double tan(double a) : 실수 a의 tangent값 리턴
+static double exp(double a) : e^a값 리턴
+static double ceil(double a) : 올림, 실수 a 보다 크거나 같은 수 중에서 가장 작은 정수를 실수 타입으로 리턴
+static double floor(double a) : 내림, 실수 a 보다 작거나 같은 수 중에서 가장 큰 정수를 실수 타입으로 리턴 
+static double max(double a, double b) : 두수 a,b 중에서 큰 수 리턴 
+static double min(double a, double b) : 두수 a,b 중에서 작은 수 리턴 
+static double random() : 0.0보다 크거나 같고 1.0 보다 작은 임의의 실수 리턴
+static long random(double a) : 반올림 실수 a를 소수 첫째 자리에서 반올림한 정수를 long타입으로 반환 
+static double sqrt(double a) : 실수 a의 제곱근 리턴 
+</pre></code>
+
+Calendar 클래스
+
+Calendar 클래스는 java.util패키지에 있는 추상 클래스로서 년, 월, 일, 요일, 시간, 분, 초, 밀리초까지 프로그램이 실행되는 동안 개발자가 기억하고자 하는 시간과 날짜정보를 저장하고 같은 필드를 인자로 하여 set(), get() 메소드를 이용하여 날짜나 시간을 알아내거나 설정한다.
+
+주의할점
+
+Calendar로 컴퓨터의 현재 시간을 알아낼 수는 있지만, Calendar 객체에 날짜와 시간을 설정한다고 해서 현재 컴퓨터의 시간을 바꾸지는 못한다.
+
+Calendar 클래스 get(), set()에 사용되는 static 상수
+
+<pre><code>
+year : 년도
+month : 달(0 ~ 11)
+hour : 시간(0 ~ 11)
+hour_of_day : 24시간 기준으로 한시간
+second : 초
+day_of_month : 한 달의 날짜
+day_of_week : 한 주의 요일
+am_pm : 오전인지 오후인지 구분
+minute : 분
+millisecond : 밀리초
+</pre></code>
+
+Calendar 객체 생성 
+
+<pre><code>
+Calendar now = Calendar.getInstance();
+</pre></code>
+
+날짜와 시간 알아내기
+
+<pre><code>
+int year = new.get(Calendar.YEAR); // 현재 년도
+int month = now.get(Calendar.MONTH) + 1; // 현재 달 
+</pre></code>
+
+날짜와 시간 설정하기
+
+<pre><code>
+Calendar firstDate = Calendar.getInstance();
+firstDate.clear(); // 현재 날짜와 시간 정보를 모두 지운다.
+firstDate.set(2016,11,25); // 2016년 12월 25일. 12월은 11로 설정
+firstDate.set(Calendar.HOUR_OF_DAY,20); // 저녁 8 시로 설정
+firstDate.set(Calendar.MINUTE,30); // 30분으로 설정 
+</pre></code>
+
 - 这个项目是我为了重新学习Java而做的项目（이 프로젝트는 내가 Java를 다시 공부하기위해서 만든 프로젝트입니다.）
