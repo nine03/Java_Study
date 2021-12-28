@@ -624,4 +624,5 @@ Parralel은 단어 그대로 병렬 처리를 의미하며 par로 줄여서 사�
 
 ![정리11](https://user-images.githubusercontent.com/60682087/147577915-5696d3e7-6432-436f-b150-0dd5cbf09bbc.png)
 
+
 - 这个项目是我为了重新学习Java而做的项目（이 프로젝트는 내가 Java를 다시 공부하기위해서 만든 프로젝트입니다.）
