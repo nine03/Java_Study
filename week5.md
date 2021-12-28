@@ -220,5 +220,97 @@ Integer ten = 10; // 자동 박싱. Integer ten = Integer.valueOf(10); 로 자�
 int n = ten;  // 자동 언박싱. int n = ten.intValue();로 자동처리된다.
 </pre></code>
 
+String 클래스
+
+java.lang 패키지에 포함된 클래스로서 String 클래스는 문자열을 나타낸다.  스트링 리터럴은 자바 컴파일러에 의해 모두 String 객체로 처리된다.
+
+<pre><code>
+String str1 = "abcd"; // String 스트링 리터럴로 String 객체 생성 
+
+char data[] = {'a','b','c','d'}; // String 클래스의 생성자를 이용하여 String 객체 생성
+String str2 = new String(data);
+String str3 = new String("abcd"); // str2와 str3은 모두 "abcd" 문자열 
+</pre></code>
+
+생성자 
+
+<pre><code>
+String() : 빈 스트링 객체 생성
+String(char[] value) : char 배열에 있는 문자열을 스트링 객체로 생성
+String(String original) : 매개변수로 주어진 문자열과 동일한 스트링 객체 생성
+String(StringBuffer buffer) : 매개변수로 주어진 스트링 버퍼의 문자열을 스트링 객체로 생성 
+</pre></code>
+
+스트링 리터럴
+
+스트링 리터럴은 자바 내부에서 리터럴 테이블로 특별히 관리하여, 동일한 리터럴을 공유시킨다.
+
+new String() 
+
+new String()으로 생성된 스트링은 new를 이용하여 생성되는 다른 객체와 동일하게 힙 메모리에 생성된다. 
+
+스트링 객체는 수정이 불가능하다. 
+
+<pre><code>
+String s = new String("Hello");
+String t = s.concat("Java"); // 스트링s에 "Java" 를 덧붙인 새로운 스트링 객체 리턴 
+</pre></code>
+
+String 활용 
+
+<pre><code>
+char charAt(int index) : index 인덱스에 있는 문자 값 리턴 
+int codePointAt(int index) : index 인덱스에 있는 유니코드  값 리턴 
+int compareTo(String anotherString) : 두 스트링을 사전 순으로 비교하여 두 스트링이 같으면, 0 현 스트링이 anotherString보다 먼저 나오면 음수, 아니면 양수 리턴
+String concat(String str) : 현재 스트링 뒤에 str 스트링을 덧붙인 새로운 스트링 리턴
+boolean contains(CharSequence s) : s에 지정된 문자들을 포함하고 있으면 true 리턴 
+int length() : 스트링의 길이 리턴
+String replace(Charsequence target, Charsequence replacement) : target이 지정하는 일련의 문자들을 replacement가 지정하는 문자들로 변경한 스트링 리턴 
+String[]split(String regex) : 정규식 regex에 일치하는 부분을 중심으로 스트링을 분리하고, 분리된 스트링들을 배열로 저장하여 리턴 
+String subString(int beginIndex) : beginIndex 인덱스 부터  시작하는 서브 스트링 리턴
+String toLowerCase() : 소문자로 변경한 스트링 리턴 
+String toUpperCase() : 대문자로 변경한 스트링 리턴 
+String trim() : 스트링 앞뒤의 공백 문자들을 제거한 스트링 리턴 
+</pre></code>
+
+ex)
+
+문자열 비교 int compareTo(String anotherString)
+
+<pre><code>
+String java = "Java";
+String cpp = "C++";
+int res = java.compareTo(cpp);
+if(res == 0)
+      System.out.println("the same");
+else if(res < 0)
+      System.out.println(java + "<" + cpp);
+else 
+      System.out.println(java + ">" + cpp);
+</pre></code>
+
+문자열 연결 String concat(String str)
+
+<pre><code>
+System.out.print("abcd" + 1 + true + 3.13e^-2 + 'E' + "fgh");
+"I love".concat("Java");
+</pre></code>
+
+공백 제거 String trim()
+
+<pre><code>
+String a ="  abcd    def   ";
+String b ="   xyz\t";
+String c = a.trim(); // c = "abcd   def". 문자열 중간에 있는 공백은 제거되지 않음
+String d = b.trim(); // d = "xyz" . 스페이스와 '\t' 제거됨
+</pre></code>
+
+문자열의 문자 char charAt(int index)
+
+<pre><code>
+String a = "class";
+char c = a.charAt(2); // c = 'a'
+</pre></code>
+
 
 - 这个项目是我为了重新学习Java而做的项目（이 프로젝트는 내가 Java를 다시 공부하기위해서 만든 프로젝트입니다.）
