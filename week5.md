@@ -380,6 +380,8 @@ double d = Math.random();
 double pi = Math.PI(); // 3.141592 원주율 
 </pre><code>
 
+
+
 Math 클래스의 주요 메소드 
 
 <pre><code>
