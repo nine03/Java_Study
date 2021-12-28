@@ -375,12 +375,11 @@ Math() 클래스
 
 Math 클래스는 java.lang 패키지에 포함되어 있으며 기본적인 산술 연산을 제공한다. 모든 멤버 메소드는 static 타입이다. 
 
+
 <pre><code>
 double d = Math.random();
 double pi = Math.PI(); // 3.141592 원주율 
-</pre><code>
-
-
+</pre></code>
 
 Math 클래스의 주요 메소드 
 
