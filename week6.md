@@ -59,6 +59,78 @@ Vector<Integer> v = new Vector<Integer>(5); // 초기 용량이 5인 벡터 생�
 
 Vector<E> 클래스의 주요 메소드 
 
+<pre><code>
+boolean add(E element) : 벡터의 맨 뒤에 element추가
+void add(int index, E element) : 인덱스 index에 element를 삽입
+int capacity() : 벡터의 현재 용량 리턴 
+boolean addAll(Collection < ? extends E > c) : 켈렉션 c의 모든 요소를 벡터의 맨 뒤에 추가 
+void clear() : 벡터의 모든 요소 삭제
+boolean contains(Object o) : 벡터가 지정된 객체 o를 포함하고 있으면 true리턴 
+E elementAt(int index) : 인덱스 index의 요소 리턴 
+E get(index) : 인덱스 index의 요소 리턴 
+int indexOf(Object o) : o와 같은 첫 번째 요소의 인덱스 리턴, 없으면 -1 리턴 
+boolean isEmpty() : 벡터가 비어 있으면 true리턴 
+E remove(int index) : 인덱스 index의 요소 삭제
+boolean remove(Object o) : 객체o와 같은 첫 번째 요소를 벡터에서 삭제
+void removeAllElements() : 벡터의 모든 요소를 삭제하고 크기를 0으로 만든다.
+int size() : 벡터가 포함하는 요소의 개수 리턴
+Object[] toArray() : 벡터의 모든 요소를 포함하는 배열 리턴 
+</pre></code>
 
+벡터에 요소 삽입 
 
+add() 메소드를 이용하면 벡터의 끝이나 중간에 요소를 삽입할 수 있다. 
+
+<pre><code>
+v.add(Integer.valueOf(5));
+v.add(Integer.valueOf(4));
+v.add(Integer.valueOf(-1));
+</pre></code>
+
+자동 박싱 기능
+
+<pre><code>
+v.add(5); // 5 -> new Integer(5)로 자동 박싱된다.
+v.add(4); 
+v.add(-1);
+
+</pre></code>
+벡터에는 null도 사입할 수 있기 때문에, 벡터를 검색할 때 null이 존재할 수 있음을 염두에 두어야 한다.
+
+<pre><code>
+v.add(null);
+</pre></code>
+
+add()를 이용하여 벡터의 중간에 객체를 삽입할 수 있다.
+
+<pre><code>
+v.add(2,100); // 인덱스 2의 위치에 정수 100을 삽입 
+</pre></code>
+
+벡터 내의 요소알아내기
+
+벡터 내에 존재하는 요소를 알아내기 위해서 get()이나 elementAt메소드를 이용한다.
+<pre><code>
+Vector<Integer> v = new Vector<Integer>();
+v.add(5);
+v.add(4);
+v.add(-1);
+</pre></code>
+
+get()이나 elementAt() 메소드는 인자로 주어진 인덱스에 있는 Integer 객체를 리턴한다.
+
+<pre><code>
+Integer obj = v.get(1); // 벡터의 1번째 Integer 객체를 얻어낸다.
+int i = obj.intValue(); // obj에 있는 정수를 알아낸다. 이값은 4
+
+int i = v.get(1); // 자동언박싱
+</pre></code>
+
+벡터의 크기와 용량 알아내기 
+
+벡터의 크기란 벡터에 들어 있는 요소의 개수를 말하며, 벡터의 용량이란 수용할 수 있는 크기를 말한다.
+
+<pre><code>
+int len = v.size(); // 벡터의 크기. 벡터에 존재하는 요소 객체의 수
+</pre></code>
 - 这个项目是我为了重新学习Java而做的项目（이 프로젝트는 내가 Java를 다시 공부하기위해서 만든 프로젝트입니다.）
