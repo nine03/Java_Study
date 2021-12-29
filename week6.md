@@ -472,33 +472,34 @@ class GenericMethodEx {
 
 컴파일러가 toStack()의 호출문으로부터 타입 매개변수 T를 Object로 유추하는경우이다.
 
-<pre><code>
+```
 Object[] oArray = new Object[100];
 GStack<Object> ObjectStack = new GStack<Object>();
 GenericMethodEx.toStack(oArray, objectStack); // 타입 매개변수 T를 Object로 유추한다.
-</pre></code>
+```
 
 컴파일러가 toStack()의 호출문으로부터 타입 매개 변수 T를 String으로 유추하는 경우이다.
 
-<pre><code>
+```
 String[] sArray = new String[100];
 GStack<String> stringStack = new GStack<String>();
 GenericMethodEx.toStack(sArray,stringStack); // 타입 매개변수 T를 String으로 유추한다.
-</pre></code>
+```
 
 타입 매개변수 T를 Object로 유추한다.
 
-<pre><code>
+```
 GenericMethodEx.toStack(sArray,objectStack)
-</pre></code>
+```
 
 sArray는 String[] 타입이며, objectStack은 GStack<Object>이다.
 Object가 String의 슈퍼클래스이므로 컴파일러는 Object 타입으로 유추한다.
 
 제너릭의 장점
-- 동적으로 타입이 결정되지 않고 컴파일 시에 타입이 결정되므로 보다 안전한 프로그래밍 가능 
-- 런타임 타입 충돌 문제 방지
-- 개발 시 타입 캐스팅 절차 불필요
-- ClassCastException 방지
+1. 동적으로 타입이 결정되지 않고 컴파일 시에 타입이 결정되므로 보다 안전한 프로그래밍 가능 
+2. 런타임 타입 충돌 문제 방지
+3. 개발 시 타입 캐스팅 절차 불필요
+4. ClassCastException 방지
+
 
 - 这个项目是我为了重新学习Java而做的项目（이 프로젝트는 내가 Java를 다시 공부하기위해서 만든 프로젝트입니다.）
