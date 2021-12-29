@@ -131,6 +131,84 @@ int i = v.get(1); // 자동언박싱
 벡터의 크기란 벡터에 들어 있는 요소의 개수를 말하며, 벡터의 용량이란 수용할 수 있는 크기를 말한다.
 
 <pre><code>
-int len = v.size(); // 벡터의 크기. 벡터에 존재하는 요소 객체의 수
+int len = v.size(); // 벡터의 크기. 벡터에 존재하는 요소 객체의 수 size() 메소드룰 호출한다.
+</pre></code>
+
+<pre><code>
+int cap = v.capacity(); // 벡터의 용량
+</pre></code>
+
+<pre><code>
+v.remove(1); // 인덱스 1의 워치에 있는 요소 삭제
+</pre></code>
+
+<pre><code>
+Integer m = Integer.valueOf(100); // m은 객체 레퍼런스
+v.add(m);
+...
+v.remove(m); // 레퍼런스 m의 요소 삭제
+</pre></code>
+
+벡터의 모든 요소를 삭제하는방법 
+<pre><code>
+v.removeAllElements();
+</pre></code>
+
+컬렉션과 자동 박싱/언박싱
+
+자동 박싱(auto boxing)에 의해 int 타입을 값을 사용하면 자동으로 Integer 객체로 변환되어 삽입된다.
+<pre><code>
+v.add(4); // 정수 4가 Integer(4)로 자동 박싱된다.
+v.add(-1); // 정수 -1이 Integer(-1)로 자동 박싱된다.
+</pre></code>
+
+컬렉션으로부터 값을 얻어내는 과정에서는 과정에서는 자동 언박싱(auto unboxing)이 일어난다.
+<pre><code>
+int k = v.get(0); // k = 4
+</pre></code>
+
+컬렉션을 매개변수로 받는 메소드 만들기
+<pre><code>
+public void printVector(Vector<Integer> v) {
+    for(int i = 0; i < v.size(); i++) {
+      int n = v.get(i); // 벡터의 i번째 정수
+      System.out.println(n);
+    }
+}
+</pre></code>
+
+메소드 호출하는 코드 
+<pre><code>
+Vector<Integer> v = new Vector<Integer>(); // Integer 벡터 생성 
+printVector(v); // 메소드 호출 
+</pre></code>
+
+자바의 타입 추론 기능 
+<pre><code>
+Vector<Integer> v = new Vector<Integer>(); // Java 7이전
+Vector<Integer> v = new vector<>(); // Java 7부
+var v = new Vector<Integer>(); // Java 10부터
+</pre></code>
+
+ArrayList<E>
+
+ArrayList<E>는 가변 크기의 배열을 구현한 컬렉션 클래스로서 경로명은 java.util.ArrayList이며, Vector 클래스와 거의 동일하다. 크게 다른 점은 ArrayList는 스레드 간에 동기화를 지원하지 않기 때문에, 다수의 스레드가 동시에 ArrayList에 요소를 삽입하거나 삭제할 때 ArrayList의 데이터가 훼손될 우려가 있다. 하지만 멀티스레드 동기화를 위한 시간 소모가 없기 때문에, ArrayList는 Vector보다 속도가 빨라, 단일 스레드 응용에는 더 효과적이다.
+
+ArrayList<E>  클래스의 주요 메소드
+
+<pre><code>
+boolean add(E element) : ArrayList의 맨 뒤에 element추가
+void add(int index, E element) : 인덱스 index 위치에 element삽입
+boolean addAll(Collection < ? extends E > c) : 컬렉션 c의 모든 요소를 ArrayList의 맨 뒤에 추가 
+void clear() : ArrayList의 모든 요소 삭제
+boolean contains(Object o) : ArrayList가 지정된 객체를 포함하고 있으면 true리턴
+E elementAt(int index) : index 인덱스의 요소 리턴 
+E get(int index) : index 인덱스의 요소 리턴 
+int indexOf(Object o) : o와 같은 첫 번째 요소의 인덱스 리턴, 없으면 -1리턴
+boolean isEmpty() : ArrayList가 비어있으면 true리턴
+E remove(int index) : index 인덱스의 요소 삭제 
+boolean remove(Object o) : o와 같은 첫 번째 요소를 ArrayList에서 삭제
+int size() : ArrayList가 포함하는 요소의 개수 리턴
+Object[] toArray() : ArratList의 모든 요소를 포함하는 배열 리턴 
 </pre></code>
 - 这个项目是我为了重新学习Java而做的项目（이 프로젝트는 내가 Java를 다시 공부하기위해서 만든 프로젝트입니다.）
