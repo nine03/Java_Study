@@ -141,4 +141,27 @@ InputStreamReader(InputStream in) : in으로 부터 읽는 기본 문자 집합�
 InputStreamReader(InputStream in, Charset cs) : in으로부터 읽는 cs 문자 집합의 InputStreamReader 생성
 InputStreamReader(InputStream in, String charsetName) : in으로부터 읽는 charsetName 문자 집합의 InputStreamReader생성
 </pre></code>
+
+InputStreamReader로 문자 입력 스트림 생성
+
+InputStreamReader는 바이트 스트림을 전달받아 문자 정보로 변환하는 스트림 객체이다. 
+
+<pre><code>
+FileInputStream fin = new FileInputStream("c:\\Temp\\hangul.txt");
+</pre></code>
+
+c:\Temp\hangul.txt는 메모장으로 작성한 한글 텍스트 파일이다. 그러고 나서 다음과 같이 InputStreamReader 객체를 생성한다.
+
+<pre><code>
+InputStreamReader in = new InputStreamReader(fin,"MS949");
+</pre></code>
+
+생성자 InputStreamReader()의 두 번째 매개변수에는 fin으로부터 읽어 들인 바이트들을 문자로 인코딩하기 위한 문자 집합을 지정한다.
+원도우에서 디폴트로 사용하는 문자 집합은 MS949 이다. 그러므로 앞의 코드에서 InputStreamReader 생성자에 MS949 문자 집합을 지정하였다.
+
+파일 읽기
+
+in.read()는 문자 집합의 인코딩 규칙에 따라, fin에게 파일로부터 필요한 바이트들을 읽도록 지시하고, 읽어 들인 바이트들을 MS949 문자 집합에 정의된 문자인지 찾아 한글 문자를 리턴한다. 만일 문자 집합에 없는 바이트들인 경우 정상적이지 않은 값을 리턴한다.
+
+
 - 这个项目是我为了重新学习Java而做的项目（이 프로젝트는 내가 Java를 다시 공부하기위해서 만든 프로젝트입니다.）
