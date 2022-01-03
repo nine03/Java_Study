@@ -16,5 +16,18 @@ AWT(Abstract Windowing Toolkit)는 자바가 처음 나왔을 때 함께 배포�
 
 스윙 기반의 GUI 응용프로그램 샘플
 
+- 응용프로그램의 전체 컴포넌트를 담는 JFrame
+- 모든 메뉴를 담는 JMenuBar
+- 메뉴로 작동하는 JMenu
+- 툴바로 작동하는 JToolBar
+- 버튼으로 작동하는 JButton. 툴바에 부착된다.
+- 문자열을 출력하는 JLabel. 툴바에 부착된다.
+- 이미지 버튼으로 작동하는 JButton. 툴바에 부착된다.
+- 한 줄 문자열을 입력 받는 찾 JTextFiled. 툴바에 부착된다.
+- 푸시다운 버튼으로 작동하는 JComboBox. 툴바에 부착된다.
+- 두 개의 분리된 팬으로 작동하는 JSplitPane의 왼쪽에 부착된다.
+- 리스트를 출력하는 JList, JSplitPane의 왼쪽에 부착된다.
+- 이미지를 출력하는 JLabel. JSplitPane의 오른쪽에 부착된다.
+- JLabel에 출력된 이미지나 텍스트를 스크롤 가능하게 만드는 
 
 - 这个项目是我为了重新学习Java而做的项目（이 프로젝트는 내가 Java를 다시 공부하기위해서 만든 프로젝트입니다.）
