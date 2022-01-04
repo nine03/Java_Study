@@ -87,4 +87,84 @@ import javax.swing.*; // 스윙 컴포넌트 클래스들의 경로명
 import javax.swing.event.*; // 스윙 이벤트 처리에 필요한 클래스들의 경로명
 </pre></code>
 
+스윙 프레임과 컨텐트팬
+
+스윙 프레임은 모든 스윙 컴포넌트들을 담는 최상위 컨테이너(Top Level Container)이다. 스윙 프레임이 출력될 때, 스윙 프레임이 내에 부착된 모든 컴포넌트들이 화면에 출력된다. 컴포넌트들은 스웡 프레임 내의 모든 컴포넌트들도 프레임과 함께 화면에서 사라진다. 스윙에서 프레임의 역할을 수행하는 클래스가 JFrame 객체는 Frame(java.awt.Frame), 메뉴바(Menu Bar), 컨텐트팬(Content Pane)의 3공간으로 구성된다.Frame은 AWT패키지에 있는 클래스로서 JFrame이 같이 상속받기 때문에 당연히 그 속성들이 존재하며, 메뉴바는 메뉴들을 부착하는 공간이고, 컨텐트팬은 메뉴를 모든 GUI컴포넌트들을 부착하는 공간이다. 
+
+프레임 만들기, JFrame 클래스 상속 
+
+<pre><code>
+public class MyFrame extends JFrame {
+.................................
+}
+</pre></code>
+
+스윙 프레임 생성 
+
+<pre><code>
+MyFrame frame = new MyFrame(); // 스윙 프레임 생성 
+</pre></code>
+
+<pre><code>
+setTitle("300x300 스윙 프레임 만들기"); // 프레임 타이틀 설정 
+setSize(300,300); // 폭 300, 높이 300 크기로 프레임 크기 설정
+setVisible(true); // 프레임이 출력되도록 지시. false의 경우 프레임이 숨겨짐  
+</pre></code>
+
+스윙 응용프로그램에서 main() 메소드의 기능과 위치 
+
+스윙 응요프로그램에서 main()의 기능은 최소화하는 것이 좋다. main()에는 스윙 응용프로그램이 실행되는 시작점으로서 프레임을 생성하는 코드 정도만 만들고, 나머지 기능은 프레임 클래스에 작성하는 것이 좋다.
+
+프레임에 컴포넌트 붙이기
+
+프레임은 응용프로그램을 구성하는 바탕 틀이다.
+
+타이틀 달기
+
+프레임에 타이틀을 달기 위해서는 다음과 같이 super()를 이용하여 JFrame의 생성자를 호출하거나, JFrame 클래스의 setTitle() 메소드를 이용 할 수 있다.
+
+<pre><code>
+public MyFrane() { // 생성자
+  super("타이틀문자열"); // JFrame("타이틀문자열") 생성자를 호출하여 타이틀 달기
+  setTitle("타이틀문자열"); // 메소드를 호출하여 타이틀 달기 
+}
+</pre></code>
+
+메뉴 붙이기
+
+메뉴를 작성하기 위해서는 메뉴바를 만들고, 메뉴를 붙이고, 메뉴에는 여러개의 메뉴 아이템을 붙인다. 메뉴바를 JFrame의 메뉴바 영역에 붙이면 화면에 메뉴가 출력된다.
+
+컨텐트팬에 컴포넌트 달기 
+
+스윙에서는 컨텐트팬(Content pane)에만 컴포넌트를 부착할 수 있다. JFrame 객체가 생길 때 컨텐트팬이 자동으로 생성한다. 그러므로 현재 프레임에 붙어 있는 컨텐트팬을 알아내기 위해서는, 다음과 같이 JFrame 클래스의 getContentPane() 메소드를 호출한다.
+
+<pre><code>
+public class MyFrame extends JFrame {
+        public MyFrame() {
+          ...
+          Container contentPane = getContentPane(); // 프레임에 부착된 컨텐트팬을 알아낸다.
+        }
+        ...
+}
+</pre></code>
+
+컨텐트팬에 컴포넌트를 붙이는 것은 비교적 간단하다. 컨텐트팬은 컨테이너이기때문에 다음과 같이 add() 메소드를 이용하여 간단히 컴포넌트를 부착하면 된다.
+
+<pre><code>
+JButton button = new JButton("Click"); // 버튼 컴포넌트 생성
+contentPane.add(button); // 컨텐트팬에 버튼 부착
+</pre></code>
+
+컨텐트팬의 변경 
+
+JFrame 클래스의 setContenetPane() 메소드를 이용하면 프레임에 부착된 컨텐트팬을 제거하고 새로운 컨텐트팬을 붙일 수 있다. 컨텐트팬은 Container 타입이므로 Container를 상속받은 어떤 컨테이너도 컨텐트팬이 될 수 있다.
+
+<pre><code>
+class MyPanel extends JPanel {
+    // JPanel을 상속받은 패널을 작성한다.
+}
+
+frame.setContentPane(new MyPanel()); // 프레임의 컨텐트팬을 MyPanel 객체로 변경 
+</pre></code>
+
 - 这个项目是我为了重新学习Java而做的项目（이 프로젝트는 내가 Java를 다시 공부하기위해서 만든 프로젝트입니다.）
