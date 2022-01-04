@@ -167,4 +167,254 @@ class MyPanel extends JPanel {
 frame.setContentPane(new MyPanel()); // 프레임의 컨텐트팬을 MyPanel 객체로 변경 
 </pre></code>
 
+스윙 응용프로그램의 종료 
+
+자바에서 프로그램을 종료하려면 어떤 상황에서나 다음 코드를 사용하면 된다.
+
+<pre><code>
+System.exit(0); // 자바프로그램을 종료한다.
+</pre></code>
+
+프레임 원도우가 닫힐 때 스웡 프로그램도 함께 종료시키고자 한다면 다음 코드를 삽입하여야 한다.
+
+<pre><code>
+frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+// 프레임이 닫힐 때 프로그램도 함께 종료한다.
+</pre></code>
+
+컨테이너와 배치
+
+컨테이너에 부착되는 컴포넌트들의 위치와 크기는 컨테이너 내부에 있는 배치관리자(Layout Manager)에 의해 결정된다. 
+
+- 컨테이너마다 배치관리자가 하나씩 있다.
+- 배치관리자는 컨테이너에 컴포넌트가 부착되는 시점에 컴포넌트의 위치와 크기를 결정한다.
+- 컨테이너의 크기가 변경되면 배치관리자는 컨테이너 내부의 모든 컴포턴트들의 위치와 크기를 재조정한다. 
+
+배치관리자의 종류
+
+FlowLayout
+
+컨테이너에 부착되는 순서대로 왼쪽에서 오른쪽으로 컴포넌트를 배치하며, 오른쪽에 더이상 배치할 공간이 없으면 아래로 내려와서 다시 왼쪽에서 오른쪽으로 배치한다. 컴포넌트의 크기는 화면에 출력될 수 있는 적당한 크기로 설정한다.
+
+BorderLayout
+
+컨테이너의 공간을 동(EAST), 서(WEST), 남(SOUTH), 북(NORTH), 중앙(CENTER)의 5개의 영역으로 나누고 응용프로그램에서 지정한 영역에 컴포넌트를 배치한다. 응용프로그램에서는 5개의 영역 중 하나를 반드시 지정하여야 한다. 영역을 지정하지 않으면 중앙에 배치된다. 컴포넌트의 크기는 영역의 크기에 맞추어 설정된다.
+
+GridLayout
+
+컨테이너의 공간을 응용프로그램에서 설정한 동일한 크기의 2차원 격자로 나누고, 컴포넌트가 삽입되는 순서대로 좌에서 우로, 다시 위에서 아래로 배치한다. 컴포넌트의 크기는 셀의 크기와 동일하게 설정한다.
+
+CardLayout
+
+컨테이너의 공간에 카드를 쌓아 놓은 듯이 컴포넌트를 포개어 배치한다. 컴포넌트의 크기는 컨테이너의 크기와 동일하게 설정한다.
+
+컨테이너의 디폴트 배치관리자
+
+<pre><code>
+AWT와 스윙 컨테이너   디폴트 배치관리
+Window, JWindow    :  BorderLayout
+Frame, JFrame      :  BorderLayout
+Dialog, JDialog    :  BorderLayout
+Panel, JPanel      :  FlowLayout
+Applet, JApplet    :  FlowLayout
+</pre></code>
+
+컨테이너에 새로운 배치관리자 설정, setLayout() 메소드
+
+컨테이너에는 새로운 배치관리자를 마음대로 설정할 수 있다. 이를 위해 다음과 같이 Container 클래스의 setLayout() 메소드를 호출한다.
+
+<pre><code>
+Container.setLayout(LayoutManager lm); // lm을 새로운 배치관리자로 설정한다.
+</pre></code>
+
+JPanel에 BorderLayout 배치관리자를 설정하려면 다음과 같다.
+
+<pre><code>
+JPanel p = new JPanel();
+p.setLayout(new BorderLayout()); // 패널에 BorderLayout 배치관리자 설정
+</pre></code>
+
+컨텐트팬의 배치관리자를 FlowLayout으로 변경하려면 다음과 같이 한다.
+
+<pre><code>
+Container contentPane = frame.getContentPane(); // 프레임의 컨텐트팬
+contentpane.setLayout(new FlowLayout()); // FlowLayout 배치관리자 설정
+</pre></code>
+
+배치 관리자 객체 생성하는 new를 빠트리지 않도록한다.
+
+<pre><code>
+contentPane.setLayout(FlowLayout); // 오류 
+</pre></code>
+
+FlowLayout 배치관리자
+
+배치방법
+
+FlowLayout 배치관리자를 가진 컨테이너에 컴포넌트를 부착하는 방법은 다음과 같이 간단히 add() 메소드를 이용하면 된다.
+
+<pre><code>
+container.setLayout(new FlowLayout());
+container.add(new JButton("add"));
+container.add(new JButton("sub"));
+container.add(new JButton("mul"));
+container.add(new JButton("div"));
+container.add(new JButton("Calculate"));
+</pre></code>
+
+FlowLayout 배치관리자는 컴포넌트를 왼쪽에서 오른쪽으로 배치하고, 더 이상 오른쪽 공간이 없으면 다시 아래로 내려와서 왼쪽에서 오른쪽으로 배치한다.
+
+FlowLayout의 생성자와 속성 
+
+FlowLayout 배치관리자의 생성자는 다음과 같이 여러 개 있으며, 생성자에 컴포넌트 사이의 간격과 정렬 방식을 지정할 수 있으며 FlowLayout 배치관리자의 align, hGap, vGap 가 있다.
+
+<pre><code>
+FlowLayout()
+FlowLayout(int align)
+FlowLayout(int align, int hGap, int vGap)
+align : 컴포넌트의 정렬 방법. 왼쪽 정렬(FlowLayout.LEFT), 오른쪽 정렬(FlowLayout.RIGHT), 중앙 정렬(FlowLayout.CENTER(디폴트))
+hGap : 좌우 컴포넌트 사이의 수평 간격, 픽셀 단위. 디폴트는 5
+vGap : 상하 컴포넌트 사이의 수직 간격, 픽셀 단위. 디폴트는 5
+</pre></code>
+
+FlowLayout의 생성자 예제
+
+<pre><code>
+new FlowLayout(); // 중앙 정렬과 hGap = 5, vGap = 5인 배치관리자
+new FlowLayout(FlowLayout.LEFT); // 왼쪽 정렬과 hGap = 5, vGap = 5인 배치관리자
+new FlowLayout(FlowLayout.CENTER,10,20); // 왼쪽 정렬과 hGap = 10, vGap = 20인 배치관리자
+</pre></code>
+
+BorderLayout 배치관리자
+
+배치방법
+
+BorderLayout 배치관리자는 컨테이너 공간을 동(EAST), 서(WEST), 남(SOUTH), 북(NORTH), 중앙(CENTER)의 5개의 영역으로 분할하여 배치한다.
+
+다른 배치관지라와는 달리 BorderLayout 배치관리자를 가진 컨테이너에 컴포넌트를 삽입하기 위해서는 add() 메소드에 컴포넌트의 위치를 명확히 정해주어야 한다.
+
+<pre><code>
+void add(Component comp, int index) // comp 컴포넌트를 index 위치에 삽입한다.
+comp : 컨테이너에 삽입되는 컴포넌트
+index : 컴포넌트의 위치 
+동 : BorderLayout.EAST
+서 : BorderLayout.WEST
+남 : BorderLayout.SOUTH
+북 : BorderLayout.NORTH
+중앙 : BorderLayout.CENTER
+</pre></code>
+
+add() 메소드를 사용하는 방법
+
+<pre><code>
+container.setLayout(new BorderLayout());
+container.add(new JButton("div"),BorderLayout.WEST);
+container.add(new JButton("Calculate"),BorderLayout.CENTER;
+</pre></code>
+
+BorderLayout의 생성자와 속성 
+
+BorderLayout 배치관리자의 생성자는 다음과 같으며, 생성자를 이용하면 컴포넌트 사이의 간격으로 조절할 수 있다.
+
+<pre><code>
+BorderLayout()
+BorderLayout(int hGap, int vGap)
+hGap : 좌우 두 컴포넌트 사이의 수평 간격, 필셀 단위. 디폴트는0
+vGap : 상하 두 컴포넌트 사이의 수직 간격, 픽셀 단위. 디폴트는0
+</pre></code>
+
+BorderLayout의 생성자를 사용하는방법
+
+<pre><code>
+new BorderLayout(); // hGap = 0, vGap = 0인 BorderLayout 배치관리자 생성
+new BorderLayout(30,20); // hGap = 30, vGap = 20인 BorderLayout 배치관리자 생성
+</pre></code>
+
+GridLayout 배치관리자
+
+GridLayout은 컨테이너 공간을 그리드(격자) 모양으로 분할하여 각 셀에 하나씩 컴포넌트를 배치하는 방법이다. GridLayout은 부착되는 순서대로 컴포넌트를 셀에 배치한다. 
+
+컴포넌트를 삽입하는 방법
+
+<pre><code>
+container.setLayout(new FridLayout(4,3)); // 4 x 3 분할로 컴포넌트 배치
+container.add(new JButton("1")); // 상당 왼쪽 첫 번째 셀에 버튼 배치
+container.add(new JButton("2")); // 그 옆 셀에 버튼 배치
+</pre></code>
+
+GridLayout의 생성자와 속성
+
+<pre><code>
+GridLayout()
+GridLayout(int rows, int cols)
+GridLayout(int rows, int cols, int hGap, int vGap)
+rows : 그리드의 행 수, 디폴트는 1
+cols : 그리드의 열 수, 디폴트는 1
+hGap : 좌우 컴포넌트 사이의 수평 간격, 픽셀 단위. 디폴트는 0
+vGap : 상하 컴포넌트 사이의 수직 간격, 픽셀 단위. 디폴트는 0
+</pre></code>
+
+GridLayout의 생성자를 사용한 예제
+
+<pre><code>
+new GridLayout(); // 그리드에 배치하는 GridLayout 배치관리자 생성
+new GridLayout(4,3,5,5); // 4 x 3 그리드에 hGap = 5, vGap = 5의 간격으로 컴포넌트를 배치하는 GridLayout 배치관리자 생성
+</pre></code>
+
+배치관리자없는 컨테이너가 필요한 경우
+- 컴포넌트의 크기나 위치를 개발자가 결정하고자 하는 경우
+- 게임 프로그램과 같이 시간이나 마우스/키보드의 입력에 따라 컴포넌트들의 위치와 크기가 수시로 변하는 경우
+- 여러 컴포넌트들이 겹치는 효과를 연출하고자 하는 경우
+
+이런경우, 컴테이너의 배치관리자를 없애고 응용프로그램에서 직접 컴포넌트의 위치와 크기를 마음대로 설정할 수 있어야 한다.
+
+컨테이너의 배치관리자 제거
+
+Container의 setLayout() 메소드를 이용하여 컨테이너의 배치관리자를 제거할 수 있다.
+
+<pre><code>
+container.setLayout(null); // container의 배치관리자 제거
+</pre></code>
+
+JPanel에 현재 부착된 배치관리자를 삭제한다.
+
+<pre><code>
+JPanel p = new JPanel();
+p.setLayout(null);
+</pre></code>
+
+예제
+
+<pre><code>
+JPanel p = new JPanel();
+p.setLayout(null);
+
+// 배치관리자가 없으므로 아래 2개의 버튼은 배치되지 않는다.
+p.add(new JButton("click")); // 폭과 높이가 0인 상태로 화면에 보이지 않는다.
+p.add(new JButton("me!")); // 폭과 높이가 0인 상태로 화면에 보이지 않는다.
+</pre></code>
+
+컴포넌트의 절대 위치와 절대 크기 설정 
+
+배치관리자가 없는 컨테이너에 컴포넌트를 삽입할 때는 응용프로그램에서 컴포넌트의 크기와 위치를 직접 설정하여야 한다. 컴포넌트의 절대 위치와 크기를 설정하기 위해서는 java.awt.Component 클래스의 다음 메소드를 이용한다.
+
+<pre><code>
+void setSize(int width, int height) 컴포넌트를 width x height 크기로 설정 
+void setLocation(int x, int y) 컴포넌트를 왼쪽 상단 모서리 좌표를 (x,y)로 설정
+void setBounds(int x,int y,int width, int height) 크기와 위치 동시 설정
+</pre></code>
+
+예제
+
+<pre><code>
+Panel p = new JPanel();
+p.setLayout(null); // 패널 p의 배치관리자 제거
+JButton clickButton = new JButton("Click");
+clickButton.setSzie(100,40); // 버튼의 크기를 100 x 40으로 지정
+clickButton.setLocation(50,50); // 버튼의 위치를 (50,50)으로 지정
+p.add(clickButton); // 패널에 버튼 부착. 패널 내 (50,50) 위치에 100 x 40 크기의 버튼 출력
+</pre></code>
+
+CardLayout을 제외한 나머지 배치관리자는 컴포넌트들이 서로 겹치지 않도록 배치한다. 그러나 배치관리자가 없는 컨테이너를 만드면 컴포넌트를 절대 위치에 절대 크기로 배치할 수 있기 때문에 컴포넌트들이 서로 켭치도록 배치할 수 있다.
+
 - 这个项目是我为了重新学习Java而做的项目（이 프로젝트는 내가 Java를 다시 공부하기위해서 만든 프로젝트입니다.）
