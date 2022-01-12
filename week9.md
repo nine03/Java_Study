@@ -197,4 +197,65 @@ new 익명클래스의슈퍼클래스(생성자인자들) {
 } 
 </pre></code>
 
+![905c29db7057e0299f7f85383bbea96](https://user-images.githubusercontent.com/60682087/149161692-95530825-88d5-43b7-8ec6-82c88b611391.png)
+
+KeyEvent와 KeyListener
+
+Key 이벤트와 포커스
+
+Key 이벤트는 사용자가 키를 입력할 때 발생하는 이벤트이며, 모든 컴포넌트가 Key 이벤트를 받을 수 있다. 그러나 응용프로그램 내에 포커스(focus)를 가진 컴포넌트가 키 입력을 독점하기 떄문에, 현재 포커스를 가진 컴포넌트에만 Key 이벤트가 전달된다. 
+
+포커스
+
+포커스는 키 입력의 독점권을 뜻한다. 버튼을 누르기 위해 <Enter> 키를 입력하더라도 버튼이 포커스를 가지고 있지 않다면 Key 이벤트를 받을 수 없다. 어떤 컴포넌트에게 키를 입력하고자 하면 <Tab> 키나 마우스 클릭으로 포커스를 그 컴포넌트에게 이동시켜야 한다. 스윙 응용프로그램에서는 강제로 임의의 컴포넌트에 포커스를 주기 위해 다음 두 코드가 모두 필요하다.
+
+<pre><code>
+component.setFocusable(true); // component가 포커스를 받을 수 있도록 설정한다.
+component.requestFocus(); // component에게 포커스를 주어 키 입력을 받을 수 있게 함
+</pre></code>
+	
+컴포넌트에 포커스 주기 
+
+<pre><code>
+setVisible(true); // 스윙 프레임 출력
+component.setFocusable(true);
+component.requestFocus(); 
+</pre></code>
+	
+<pre><code>
+component.addMouseListener(new MouseAdapter() {
+	public void mouseClicked(MouseEvent e) {
+		Component c = (Component)e.getSource(); // 클릭된 컴포넌트
+		c.setFocusable(true);
+		c.requestFocus(); 
+	}
+}); // 예제 10-8에서 활용하였음
+</pre></code>
+
+Key 이벤트와 KeyListener
+
+KeyListener 인터페이스는 3개의 추상 메소드로 구성된다. keyPressed()는 키를 누르는 순간에, keyReleased()는 누른 키를 떼는 순간에 호출되며, 문자 키(유니코드)인 경우에는 누른 키가 떼어지는 순간 keyTyped()가 추가적으로 호출된다.
+
+유니코드(Unicode)는 전 세계의 모든 문자를 컴퓨터에서 일관되게 표현하고 다루고자 설계된 국제 산업 표준이다.
+
+	
+키 이벤트 리스너 달기 
+컴포넌트에 키 이벤트 리스너를 등록하기 위해서는 다음과 같이 addKeyListener() 메소드를 이용한다.
+	
+<pre><code>
+component.addKeyListener(myKeyListener);
+</pre></code>
+	
+<pre><code>
+Key 이벤트가 발생하는 경우    KeyListener의 메소드           리스너
+키를 누르는 순간              void keyPressed(KeyEvent e)   KeyListener
+누른 키를 떼는 순간           void keyReleased(KeyEvent e)  KeyListener
+누른 키를 떼는 순간           void keyTyped(KeyEvent e)     KeyListener
+(유니코드 키 경우에만 적용)
+</pre></code>
+	
+입력된 키 판별
+
+	
+	
 - 这个项目是我为了重新学习Java而做的项目（이 프로젝트는 내가 Java를 다시 공부하기위해서 만든 프로젝트입니다.）
