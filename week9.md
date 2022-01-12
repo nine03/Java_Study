@@ -256,6 +256,28 @@ Key 이벤트가 발생하는 경우    KeyListener의 메소드           리�
 	
 입력된 키 판별
 
-	
-	
+키 이벤트가 발생하면 입력된 키 정보가 KeyEvent 객체에 담겨져 리스너에게 전달된다. KeyEvent 객체의 다음 2개의 메소드를 통해 입력된 키를 판별할 수 있다.
+		
+char KeyEvent.getKeyChar()
+
+입력된 키의 문자코드를 리턴하며, 유니코드 키가 아닌 경우 KeyEvent.CHAR_UNDEFINED를 리턴한다. 다음은 q키가 눌러지는 순간 프로그램을 종료하는 코드이다. getKeyChar()의 리턴 값과 문자'q'를 서로 비교하면 된다.
+
+<pre><code>
+public void keyPressed(KeyEvent e) {
+	if(e.getKeyChar() == 'q')
+		System.exit(0); // 키 q가 눌러지면 프로그램을 종료한다.
+}
+</pre></code>
+
+int KeyEvent.getKeyCode()
+
+이 메소드는 유니코드 키를 포함한 모든 키에 대해 정수형의 키 코드(key code) 값을 리턴한다. 키 코드는 운영체제나 하드웨어에 따라 서로 다를 수 있기 때문에, 입력된 키를 판별하기 위해서는 반드시 getKeyCode()가 리턴한 키 코드와 가상 키(Virtual Key) 값을 비교해야 한다. 가상 키는 KeyEvent 클래스에 VK_로 시작하는 static 상수로 선언되어 있다.
+
+
+<pre><code>
+public void keyPressed(KeyEvent e) {
+	if(e.getKeyCode() == KeyEvent.VK_F5)
+	System.exit(0);
+}
+</pre></code>
 - 这个项目是我为了重新学习Java而做的项目（이 프로젝트는 내가 Java를 다시 공부하기위해서 만든 프로젝트입니다.）
