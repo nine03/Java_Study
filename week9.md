@@ -280,4 +280,93 @@ public void keyPressed(KeyEvent e) {
 	System.exit(0);
 }
 </pre></code>
+
+![f5d18edf2ec48144cfe6c93559428c6](https://user-images.githubusercontent.com/60682087/149168417-18aa2c3b-d149-424d-b26b-7ed356f80788.png)
+
+KeyEvent와 KeyListener의 활용
+
+이 절에서는 KeyListener, KeyEvent 객체, getKeyChar(), getKeyCode() 등을 활용할 수 있다.
+
+<pre><code>
+static String KeyEvernt.getKeyText(int KeyCode);
+</pre></code>
+
+Mouse 이벤트 
+
+Mouse 이벤트는 사용자의 마우스 조작에 따라 총 8가지 경우에 발생한다. 이중에서 5가지 경우는 MouseListener의 메소드가 호출되고, 2가지 경우는 MouseMotionListener의 메소드가, 나머지 1가지는 MouseWheelListener의 메소드가 호출된다. 모든 스윙 컴포넌트가 Mouse 이벤트를 받을 수 있으며, Mouse 이벤트가 발생하면 MouseEvent 객체나 MouseWheelEvent객체가 리스너의 메소드에 전달된다.
+
+![f64d1d89bac1f4a609d3866f039866f](https://user-images.githubusercontent.com/60682087/149171216-b7fd640f-f5ff-4f13-973e-29a635f5dd55.png)
+
+마우스 리스너 달기 
+
+<pre><code>
+component.addMouseListener(myMouseListener);
+</pre></code>
+
+동일한 컴포넌트가 마우스 드래깅(mouseDragged())과 마우스 무브(mouseMoved()) 이벤트도 함께 처리하고자 하면, 다음과 같이 MouseMotion 리스너를 따로 등록해야 한다.
+
+<pre><code>
+component.addMouseMotionListener(myMouseMotionListener);
+</pre></code>
+
+MouseEvent 객체 
+
+MouseEvent 객체는 Mouse 이벤트나 MouseMotion 이벤트 정보를 제공하는 객체이다. MouseEvent 객체의 메소드를 이용하여 이벤트 정보를 얻을수 있다.
+
+마우스 포인터의 위치
+
+<pre><code>
+int getX() // 마우스 포인터의 x 위치 리턴
+int getY() // 마우스 포인터의 y 위치 리턴
+Point getPoint() // 마우스 포인터의 위치를 Point 객체로 리턴. point 객체에 x,y 정보 있음 
+
+public void mousePressed(MouseEvent e) {
+	int x = e.getX();
+	int y = e.getY();
+}
+</pre></code>
+
+마우스 클릿 횟수
+
+더블클릭을 인식할 때 이용되는 것으로 클릭 횟수를 리턴하는 메소드는 다음과 같다.
+
+int getClickCount() // 마우스의 클릭 횟수 리턴
+
+<pre><code>
+public void mouseClicked(MouseEvent e) {
+	if(e.getClickCount() == 2) {
+		// 더블클릭을 처리하는 코드
+	}
+}
+</pre></code>
+
+마우스 버튼 
+
+눌러진 마우스 버튼을 리턴하는 메소드는 다음과 같다.
+
+int getButton() // 눌러진 마우스 버튼의 번호를 리턴한다.
+리턴값은 NOBUTTON,BUTTON1,BUTTON2,BUTTON3 중의 하나이며 마우스 왼쪽 버튼은 BUTTON1이고 오른쪽 버튼은 BUTTON3이다.
+
+<pre><code>
+public void mousePressed(MouseEvent e) {
+	if(e.getButton() == MouseEvent.BUTTON1)
+		System.out.println("Left Button Pressed");
+}
+</pre></code>
+
+MouseWheelEvent와 MouseWheelListener
+
+마우스 휠을 굴리면 MouseWheelEvent가 발생하며, MouseWheelListener 인터페이스가 가진 유일한 다음 메소드가 호출된다.
+
+public void mouserWheelMoved(MouseWheelEvent e)
+
+<pre><code>
+component.addMouseWheelListener(new MouseWheelListener() {
+	public void mouseWheelMoved(MouseWheelEvent e) {
+		// 마우스 휠의 구르는 방향에 따라 이벤트를 처리한다.
+	}
+});
+</pre></code>
+
+
 - 这个项目是我为了重新学习Java而做的项目（이 프로젝트는 내가 Java를 다시 공부하기위해서 만든 프로젝트입니다.）
