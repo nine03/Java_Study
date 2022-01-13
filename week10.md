@@ -10,36 +10,36 @@
 
 배경색, 전경색, 폰트
 
-<pre><code>
+```
 c.setBackground(Color.YELLOW); // 컴포넌트의 배경색을 노란색으로 설정
 c.setForeground(Color.MAGENTA); // 컴포넌트 c의 글자색을 마젠타로 설정
 c.setFont("Arial", Font.ITALIC,20); // 20픽셀 이탤릭 Arial 체로 설정
-</pre></code>
+```
 
 위치와 크기
 
-<pre><code>
+```
 c.setLocation(100,200); // 컴포넌트 c를 (100,200) 위치로 이동
 c.setSize(100,100); // 컴포넌트 c의 크기를 100x100 크기로 설정
 
 int x = c.getX(); int y = c.getY();
 int w = c.getWidth(); int h = c.getHeight();
-</pre></code>
+```
 
 활성화/비활성화, 보이기/숨기기
 
 setEnabled()로 활성화/비활성화, setVisible()로 보이기/숨기기를 할 수 있다.
 
-<pre><code>
+```
 c.setEnabled(false); // 컴포넌트 c가 작동하지 않게 함. 버튼의 경우 클릭해도 무반응
 c.setVisible(false); // 컴포넌트 c가 화면에 보이지 않게 함 
-</pre></code>
+```
 
 부모 컨테이너 찾기
 
 getParent()를 이용하면 컴포넌트 c가 담긴 부모 컨테이너를, getTopLevelAncestor()를 호출하면 최상위 컨테이너를 알아낼 수 있다.
 
-<pre><code>
+```
 Container c = c.getParent(); // 컴포넌트 c의 부모 컨테이너 알아내기
 MyFrame frame = (Myframe)c.getTopLevelAncestor(); // c의 최상위 스윙 프레임 알아내기 
 
@@ -48,7 +48,7 @@ c.remove(child); // 컨테이너 c에서 자식 컴포넌트 child를 삭제한�
 child가 제거된다고 바로 화면에서 사라지지 않는다.
 c.revalidate(); // 컨테이너 c의 재배치
 c.repaint(); // 컴포넌트 c의 다시 그리기 
-</pre></code>
+```
 
 JLabel
 
@@ -62,18 +62,18 @@ JLabel은 문자열이나 이미지를 스크린에 출력하는 레이블 컴�
 
 문자열 레이블 생성 
 
-<pre><code>
+```
 JLabel textLabel = new JLabel("사랑합니다")
-</pre></code>
+```
 
 이미지 레이블 생성
 
 이미지를 가진 레이블을 생성하기 위해서는, ImageIcon 클래스를 이용하여 이미지 파일로부터 이미지 객체를 생성하고, JLabel로 이미지 레이블 생성한다.
 
-<pre><code>
+```
 ImageIcon image = new ImageIcon("images/sunset.jpg");
 JLabel imageLabel = new JLabel(image);
-</pre></code>
+```
 
 sunset.jpg 파일의 경로명은 "images/sunset.jpg" 이므로 이클립스의 경우 sunset.jpg는 프로젝트의 images 폴더에 있어야 한다.
 
@@ -81,10 +81,10 @@ sunset.jpg 파일의 경로명은 "images/sunset.jpg" 이므로 이클립스의 
 
 문자열과 이미지를 함께 가진 레이블을 생성하고, 문자열과 이미지를 레이블 컴포넌트 영역 내에 중앙 정렬한다.
 
-<pre><code>
+```
 ImageIcon image = new ImageIcon("images/sunset.jpg");
 JLabel imageLabel = new JLabel("사랑합니다",image,SwingConstants.CENTER);
-</pre></code>
+```
 
 JButton
 
@@ -94,9 +94,9 @@ JButton은 버튼 컴포넌트를 만드는데 이용된다. 레이블 컴포넌
 
 ![3c99c1e5ac701ec4ad76eb2795c438d](https://user-images.githubusercontent.com/60682087/149251108-0644bdba-c5bc-4952-8506-b04ee3ebabac.png)
 
-<pre><code>
+```
 JButton btn = new JButton("hello");
-</pre></code>
+```
 
 이미지 버튼 만들기 
 
@@ -114,7 +114,7 @@ pressedIcon
 
 버튼이 눌러져 있는 동안 출력되는 이미지로, JButtond의 setPressedIcon(Icon image)을 호출하여 설정한다.
 
-<pre><code>
+```
     ImageIcon normalIcon = new ImageIcon("images/normalIcon.gif");
 		ImageIcon rolloverIcon = new ImageIcon("images/rolloverIcon.gif");
 		ImageIcon pressedIcon = new ImageIcon("images/pressedIcon.gif");
@@ -126,7 +126,7 @@ pressedIcon
 실제로는 normalIcon 이미지 하나만 가진 디폴트 버튼을 많이 사용하는데, 실행 중에 디폴트 이미지를 변경하려면 다음과 같이 setIcon() 메소드를 호출하면 된다 
 
 button.setIcon(new ImageIcon("images/newIcon.gif")); // 디폴트 이미지변경
-</pre></code>
+```
 
 버튼과 레이블의 정렬(Alignment)
 
@@ -136,13 +136,13 @@ button.setIcon(new ImageIcon("images/newIcon.gif")); // 디폴트 이미지변�
 
 ![cd044db34e35176c90018ec127d9357](https://user-images.githubusercontent.com/60682087/149253358-d49091b6-76f2-46c8-85c5-72d4693572bf.png)
 
-<pre><code>
+```
 contentPane.setLayout(new BorderLayout()); // 버튼으로 꽉 채우기 위해
 ImageIcon normalIcon = new ImageIcon("images/normalIcon.gif");
 JButton btn = new JButton("call~~",normalIcon);
 btn.setHorizontalAlignment(SwingConstants.LEFT); // 버튼 안에서 이미지와 문자열의 왼쪽 정렬
 contentPane.add(btn);
-</pre></code>
+```
 
 SwingConstants.LEFT 대신 SwingConstants.CENTER나 SwingConstants. RIGHT를 사용하면 중앙정렬, 오른쪽 정렬을 할 수 있다.
 
@@ -152,13 +152,13 @@ SwingConstants.LEFT 대신 SwingConstants.CENTER나 SwingConstants. RIGHT를 사
 
 ![98f3de816bf7f73259edf4ba8ee83cf](https://user-images.githubusercontent.com/60682087/149254597-cc8ca1b9-8866-40fe-be77-70b0d6a3de04.png)
 
-<pre><code>
+```
 contentPane.setLayout(new BorderLayout()); // 버튼으로 꽉 채우기 위해
 ImageIcon normalIcon = new ImageIcon("images/normalIcon.gif");
 JButton btn = new JButton("call~~",normalIcon);
 btn.setHorizontalAlignment(SwingConstants.TOP); // 버튼 안에서 이미지와 문자열의 위쪽 정렬
 contentPane.add(btn);
-</pre></code>
+```
 
 JCheckBox
 
@@ -174,41 +174,41 @@ JCheckBox를 이용하면 선택(selected)과 해제(deselected)의 두 상태�
 
 "사과" 문자열을 가진 체크박스를 만드는 코드는 다음과 같고, 해제 상태로 생성된다.
 
-<pre><code>
+```
 JCheckBox apple = new JCheckBox("사과");
-</pre></code>
+```
 
 "배" 문자열을 가지고 처음부터 선택 상태인 체크박스는 다음 코드로 생성한다.
 
-<pre><code>
+```
 JCheckBox pear = new JCheckBox("배",true); 
-</pre></code>
+```
 
 이미지 체크박스 
 
 이미지 체크박스는 체크박스 모양대신, 선택 상태 때 출력할 별도의 이미지를 필요로한다. 선택 상태 이미지는 JCheckBox의 setSelectedIcon(ImageIcon) 메소드를 이용하여 등록한다.
 
-<pre><code>
+```
 ImageIcon cherryIcon = new ImageIcon("images/cherry.jpg"); // 해제 상태 이미지 
 ImageIcon selectedCherryIcon = new ImageIcon("images/selectedCherry.jpg"); // 선택 상태 이미지
 JCheckBox cherry = new JCheckBox("체리", cherryIcon); // 해제 상태 이미지만 가진 체크박스 생성
 cherry.setSelectedIcon(selectedCherryIcon); // 선택 상태의 이미지 등록
-</pre></code>
+```
 
 이미지 체크박스의 경우 다음과 같이 체크박스의 외곽선이 보이도록 하여 체크박스 영역을 분명히 할 수 있다.
 
-<pre><code>
+```
 cherry.setBorderPainted(true);
-</pre></code>
+```
 
 JCheckBox에서 Item 이벤트 처리 
 
 Item 이벤트는 체크박스나 라디오버튼의 선택 상태가 바뀔 때 발생하는 이벤트이다. 이미 선택 상태인 라디오버튼을 누르는 경우 선택 상태에 대한 변화가 없기 때문에 Item 이벤트는 발생하지 않는다. 선택/해제 행위는 대부분 마우스 클릭으로 이루어지지만, 다음과 같이 자바 코드로 실행할 수도 있다.
 
-<pre><code>
+```
 JCheckBox c = new JCheckBox("사과");
 c.setSelected(true); // 선택 상태로 설정, false이면 해제 상태로 설정 
-</pre></code>
+```
 
 마우스로 선택하든 프로그램 코드로 실행하든 선택 상태가 변할 때 Item 이벤트가 발생한다.
 
@@ -228,9 +228,9 @@ Item 이벤트가 발생하면 ItemEvent 객체가 생성되어 itemStateChanged
 
 JCheckBox의 addItemListener()메소드를 이용하여 다음과 같이 등록한다.
 
-<pre><code>
+```
 checkbox.addItemListener(new MyItemListener);
-</pre></code>
+```
 
 JRadioButton
 
@@ -254,9 +254,9 @@ JRadioButton과 Item 이벤트 처리
 
 라디오버튼에 선택 상태가 변경되면 Item 이벤트가 발생한다. 마우스와 키보드를  이용하거나 프로그램에서 JRadioButton의 setSelected()를 호출하여 선택 상태를 변경 할 수 있다. 이 경우 모두 Item 이벤트가 발생한다. Item 이벤트는 ItemListener 인터페이스의 다음 메소드에 의해 처리한다.
 
-<pre><code>
+```
 void itemStateChanged(ItemEvent e) // 라디오버튼의 선택 상태가 변경되었을 때 호출된다.
-</pre></code>
+```
 
 JTextField
 
@@ -268,9 +268,9 @@ JTextField 컴포넌트의 생성
   
 ![877b78e7707632ee9052c241e3bbc16](https://user-images.githubusercontent.com/60682087/149322673-ee521e9d-46bb-402e-846f-6bc11eaa2192.png)
 
-<pre><code>
+```
 JTextField tf1 = new JTextField(10);
-</pre></code>
+```
   
 JTextField의 주요 메소드 활용
 
@@ -278,27 +278,27 @@ JTextField의 주요 메소드 활용
 
 다음 코드는 사용자가 텍스트필드 창에 문자열을 입력하거나 수정할 수 없도록 한다.
 
-<pre><code>
+```
 JTextField tf = new JTextField();
 tf.setEditable(false); // 텍스트필드 창에 입력하거나 수정 불가
-</pre></code>
+```
 
   
 입력 창에 문자열 출력   
 
 다음 코드는 텍스트필드 입력 창에 있는 문자열을 "hello"로 수정하여 출력한다.
 
-<pre><code>
+```
 tf.setText("hello"); // "hello"를 텍스트필드 창에 출력 
-</pre></code>
+```
   
 문자열의 폰트 지정 
   
 다음 코드는 텍스트필드 입력 창의 문자열을 고딕체에 이탤릭 20픽셀 크기로 출력되게한다.
   
-<pre><code>
+```
 tf.setFont(new Font("고딕체",Font.ITALIC,20));
-</pre></code>
+```
   
 JTextArea
 
@@ -310,9 +310,9 @@ JTextArea 컴포넌트의 생성
 
 ![3236d10da316b3786c111f9765b142a](https://user-images.githubusercontent.com/60682087/149325222-180f6590-e85c-4459-bc99-f6518b99182d.png)
   
-<pre><code>
+```
 container.add(new JCrollPane(new JTextArea("hello",7,20)));
-</pre></code>
+```
 
 JList<E>
 
@@ -322,7 +322,7 @@ JList<E>는 여러 개의 아이템을 리스트 형식으로 보여주고 아�
 
 객체 배열로부터 리스트 생성
 
-<pre><code>
+```
 String [] fruits= {"apple", "banana", "kiwi", "mango", "pear", "peach", 
 	"berry", "strawberry", "blackberry"};
 JList<String> strList = new JList<String>(fruits);
@@ -330,26 +330,26 @@ JList<String> strList = new JList<String>(fruits);
 // scrollList 리스트 컴포넌트를 스크롤 가능하게 함
 JScrollPane pane = new JScrollPane(scrollList);
 // pane를 컨테이너에 삽입하여야 함
-</pre></cod>
+```
 
 리스트의 아이템 변경 
 
 JList<E>(Vector listData)나 JList<E>(Object [] listData) 생성자를 이용하여 리스트가 일단 생성되고 나면, listData의 벡터나 배열을 수정한다고 해도 이미 생성된 리스트를 변경할 수 없다. 설사 변경된 것처럼 보일지는 모르지만 예측할 수 없는 일이 발생하므로 주의해야한다. 생성된 리스트를 수정하는 가장 간단한 방법은 JList의 setListData() 메소드를 호출하여 리스트에 수정된 벡터나 배열을 새로 달아주는 것이다.
 
-<pre><code>
+```
 Vector v = new Vector();
 v.add("apple");
 v.add("banana");
 v.add("kiwi"); 
 JList<String> vList = new JList<String>(v);
-</pre></code>
+```
 
 리스트 생성후 리스트에 "김남윤"을 추가하려면, 다음과 같이 벡터v에 "김남윤"를 추가한 후 수정한 후 setListData(v)를 호출하여 벡터 v를 리스트에 다시 연결하면 된다.
 
-<pre><code>
+```
 v.add("김남윤");
 nameList.setListData(v);
-</pre></code>
+```
 
 JComboBox<E>	
 
@@ -362,20 +362,20 @@ JComboBox 컴포넌트의 생성
 
 배열로부터 콤보박스 생성
 
-<pre><code>
+```
 String [] fruits = {"apple", "banana", "kiwi", "mango", "pear",
 		   "peach", "berry", "strawberry", "blackberry"};
 JComboBox<String> strCombo = new JComboBox<String>(fruits);
-</pre></code>
+```
 
 콤보박스에 동적으로 아이템 추가하기
 
-<pre><code>
+```
 String [] names = {"kitae", "jaemoon", "hyosoo", "namyun"};
 JComboBox<String> nameCombo = new JComboBox<String>(); // 빈 콤보박스 생성
 for(int i = 0; i < names.length; i++)
 	nameCombo.addItem(names[i]); // names[]의 문자열을 콤보박스에 추가
-</pre></code>
+```
 
 빈 콤보박스가 아닌 경우에도 addItem() 메소드를 호출하여 아이템을 추가 할 수 있다.
 
@@ -384,9 +384,9 @@ for(int i = 0; i < names.length; i++)
 
 removeItem(Object obj), removerItemAt(int index), removeAllItems() 등을 호출하여 콤보박스의 아이템을 삭제할 수 있다. index는 0부터 시작하며, 다음예는 3번째 아이템을 삭제한다.
 
-<pre><code>
+```
 nameCombo.removeItemAt(2); // 3번째 아이템 삭제 
-</pre></code>
+```
 
 JComboBox<E>와 Action 이벤트
 
@@ -439,7 +439,7 @@ JSlider 컴포넌트의 생성
 
 슬라이더의 모양 제어
 
-<pre><code>
+```
 void setOrientation(int Orientation) // Orientation값에 따라 슬라이더의 방향을 수평, 수직 모양으로 변경한다.
 void setMinimum(int min) // 슬라이더의 minimum 값을 min 값으로 설정한다.
 void setMaximum(int max) // 슬라이더의 maximum 값을 max 값으로 설정한다.
@@ -448,14 +448,14 @@ void setPaintTicks(boolean b) // b가 true이면 슬라이더의 눈금을 보�
 void setPaintTrack(boolean b) // b가 true이면 슬라이더의 트랙(track)을 보이게 하고 b가 false이면 감춘다.
 void setMinorTickSpacing(int space) // 슬라이더의 작은 눈금 간격(minorTickSpacing)을 space로 설정한다.
 void setMajorTickSpacing(int space) // 슬라이더의 큰 눈금 간격(majorTickSpacing)을 space로 설정한다.
-</pre></code>
+```
 
 이들 메소드의 이름에서 set대신 get을 사용하면 해당 속성 값을 얻을 수 있다. 슬라이더의 값(value)을 알아내거나 수정하는 메소드는 다음과 같다.
 
-<pre><code>
+```
 int getValue() // 슬라이더의 손잡이가 가리키는 값(value)을 리턴한다.
 int setValue(int n) // 슬라이더의 값(value)을 n으로 설정한다. 슬라이더의 손잡이는 새로운 value 값을 가리키도록 이동한다.
-</pre></code>
+```
 
 JSlider와 Change 이벤트
 
