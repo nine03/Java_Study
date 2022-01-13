@@ -86,4 +86,11 @@ ImageIcon image = new ImageIcon("images/sunset.jpg");
 JLabel imageLabel = new JLabel("사랑합니다",image,SwingConstants.CENTER);
 </pre></code>
 
+JButton
+
+JButton은 버튼 컴포넌트를 만드는데 이용된다. 레이블 컴포넌트가 문자열이나 이미지를 화면에 출력하는 용도로 사용되는 것이라면, 버튼은 사용자로부터 명령을 받기 위해 사용된다. 버튼을 마우스로 클릭하거나 키로 선택하면 Action 이벤트가 발생한다.
+
+버틑은 다음 생성자를 이용하여 생성한다.
+![6d0b50e8cdd06fc3fab36daea536538](https://user-images.githubusercontent.com/60682087/149250819-ff39ed4d-a0a7-41a3-a488-04309bc4d378.png)
+
 - 这个项目是我为了重新学习Java而做的项目（이 프로젝트는 내가 Java를 다시 공부하기위해서 만든 프로젝트입니다.）
