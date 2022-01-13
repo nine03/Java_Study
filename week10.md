@@ -50,4 +50,40 @@ c.revalidate(); // 컨테이너 c의 재배치
 c.repaint(); // 컴포넌트 c의 다시 그리기 
 </pre></code>
 
+JLabel
+
+JLabel은 문자열이나 이미지를 스크린에 출력하는 레이블 컴포넌트를 만드는 클래스이다.
+
+레이블 컴포넌트 생성
+
+레이블 컴포넌트는 레이블이라고도 부르며, 다음 생성자를 이용하여 생성한다.
+
+![6c55ccbae881708aba9b5de0918dc52](https://user-images.githubusercontent.com/60682087/149243641-890c3596-604e-4a26-b48d-e21c23d28d86.png)
+
+문자열 레이블 생성 
+
+<pre><code>
+JLabel textLabel = new JLabel("사랑합니다")
+</pre></code>
+
+이미지 레이블 생성
+
+이미지를 가진 레이블을 생성하기 위해서는, ImageIcon 클래스를 이용하여 이미지 파일로부터 이미지 객체를 생성하고, JLabel로 이미지 레이블 생성한다.
+
+<pre><code>
+ImageIcon image = new ImageIcon("images/sunset.jpg");
+JLabel imageLabel = new JLabel(image);
+</pre></code>
+
+sunset.jpg 파일의 경로명은 "images/sunset.jpg" 이므로 이클립스의 경우 sunset.jpg는 프로젝트의 images 폴더에 있어야 한다.
+
+문자열, 이미지, 수평 정렬 값을 가진 레이블 생성
+
+문자열과 이미지를 함께 가진 레이블을 생성하고, 문자열과 이미지를 레이블 컴포넌트 영역 내에 중앙 정렬한다.
+
+<pre><code>
+ImageIcon image = new ImageIcon("images/sunset.jpg");
+JLabel imageLabel = new JLabel("사랑합니다",image,SwingConstants.CENTER);
+</pre></code>
+
 - 这个项目是我为了重新学习Java而做的项目（이 프로젝트는 내가 Java를 다시 공부하기위해서 만든 프로젝트입니다.）
