@@ -313,4 +313,156 @@ JTextArea 컴포넌트의 생성
 <pre><code>
 container.add(new JCrollPane(new JTextArea("hello",7,20)));
 </pre></code>
+
+JList<E>
+
+JList<E>는 여러 개의 아이템을 리스트 형식으로 보여주고 아이템을 선택하도록 하는 리스트 컴포넌트를 구현한다. JList<E>는 자체적으로 스크롤을 지원하지 않기 때문에 JScrollPane에 삽입되어야 스크롤이 가능하다.
+
+![a77e51fddaf19d3563e7b1c8cda5fb0](https://user-images.githubusercontent.com/60682087/149326380-9b84c03c-a281-426a-a628-ab225eb1d28b.png)
+
+객체 배열로부터 리스트 생성
+
+<pre><code>
+String [] fruits= {"apple", "banana", "kiwi", "mango", "pear", "peach", 
+	"berry", "strawberry", "blackberry"};
+JList<String> strList = new JList<String>(fruits);
+
+// scrollList 리스트 컴포넌트를 스크롤 가능하게 함
+JScrollPane pane = new JScrollPane(scrollList);
+// pane를 컨테이너에 삽입하여야 함
+</pre></cod>
+
+리스트의 아이템 변경 
+
+JList<E>(Vector listData)나 JList<E>(Object [] listData) 생성자를 이용하여 리스트가 일단 생성되고 나면, listData의 벡터나 배열을 수정한다고 해도 이미 생성된 리스트를 변경할 수 없다. 설사 변경된 것처럼 보일지는 모르지만 예측할 수 없는 일이 발생하므로 주의해야한다. 생성된 리스트를 수정하는 가장 간단한 방법은 JList의 setListData() 메소드를 호출하여 리스트에 수정된 벡터나 배열을 새로 달아주는 것이다.
+
+<pre><code>
+Vector v = new Vector();
+v.add("apple");
+v.add("banana");
+v.add("kiwi"); 
+JList<String> vList = new JList<String>(v);
+</pre></code>
+
+리스트 생성후 리스트에 "김남윤"을 추가하려면, 다음과 같이 벡터v에 "김남윤"를 추가한 후 수정한 후 setListData(v)를 호출하여 벡터 v를 리스트에 다시 연결하면 된다.
+
+<pre><code>
+v.add("김남윤");
+nameList.setListData(v);
+</pre></code>
+
+JComboBox<E>	
+
+JComboBox<E>는 텍스트필드, 버튼, 드롭다운(drop down) 리스트로 구성되는 콤보박스 컴포넌트를 구현한다. JDK7부터 JComboBox에 제너릭(Generics)을 도입하여 JComboBox<E>로 사용한다. E는 콤보박스에 삽입되는 아이템의 타입으로, 콤보박스를 생성할때 E대신 아이템의 타입을 대입하여 구체화해야한다.
+
+JComboBox 컴포넌트의 생성 
+
+![4cb27cbd37f96fe6d80deb23ee99a8e](https://user-images.githubusercontent.com/60682087/149328145-fe6b0bbd-3471-4bfe-bfcd-46ed7e801a7c.png)
+
+
+배열로부터 콤보박스 생성
+
+<pre><code>
+String [] fruits = {"apple", "banana", "kiwi", "mango", "pear",
+		   "peach", "berry", "strawberry", "blackberry"};
+JComboBox<String> strCombo = new JComboBox<String>(fruits);
+</pre></code>
+
+콤보박스에 동적으로 아이템 추가하기
+
+<pre><code>
+String [] names = {"kitae", "jaemoon", "hyosoo", "namyun"};
+JComboBox<String> nameCombo = new JComboBox<String>(); // 빈 콤보박스 생성
+for(int i = 0; i < names.length; i++)
+	nameCombo.addItem(names[i]); // names[]의 문자열을 콤보박스에 추가
+</pre></code>
+
+빈 콤보박스가 아닌 경우에도 addItem() 메소드를 호출하여 아이템을 추가 할 수 있다.
+
+
+콤보박스 컴포넌트의 아이템 삭제하기
+
+removeItem(Object obj), removerItemAt(int index), removeAllItems() 등을 호출하여 콤보박스의 아이템을 삭제할 수 있다. index는 0부터 시작하며, 다음예는 3번째 아이템을 삭제한다.
+
+<pre><code>
+nameCombo.removeItemAt(2); // 3번째 아이템 삭제 
+</pre></code>
+
+JComboBox<E>와 Action 이벤트
+
+Action 이벤트
+Item 이벤트
+
+독자는 하고자 하는 목적에 따라 이 두 이벤트 중에서 선택하여 사용해야 한다. 아이템 선택을 일종의 명령으로 처리하고자 하면 Action 이벤트를, 아이템을 선택하거나 해제하는 것이 목적이라면 Item 이벤트를 처리하면된다. 어떤 이벤트를 이용하든 현재 선택된 아이템을 알아내기 위해 JComboBox<E>의 다음 메소드를 활용하면 된다.
+
+![b33a73ccef4497e1bce78fb028b1d91](https://user-images.githubusercontent.com/60682087/149329586-856b3b82-f95c-4dc8-8eaf-08dfe4441d7b.png)
+
+JSlider 슬라이더 컴포넌트  
+
+JSlider
+
+JSlider는 슬라이드 바(bar)를 출력하여, 마우스로 값을 선택하도록 하는 슬라이더 컴포넌트이다. 슬라이더의 종류는 수평 슬라이더와 수직 슬라이더가 있으며, 생성 당시 선택하거나 생성 후 변경할 수 있다.
+
+손잡이
+
+손잡이(knob)는 사용자가 값을 선택하기 위해 움직이는 그래픽 심볼이다.
+
+minimum과 maximum
+
+사용자가 선택할 수 있는 최소값과 최대값이다.
+
+orientation
+
+슬라이더의 방향을 나타내는 값으로 JSlider.HORIZONTAL과 JSLider.VERTICAL의 둘 중 하나이며 각각 수평, 수직 슬라이더를 말한다.
+
+track
+
+슬라이더의 트랙 바(bar)를 말한다. 트랙 바는 보이게 할 수도 있고 보이지 않게 할 수도 있다.
+
+
+
+majorTickSpacing과 minorTickSpacing
+
+큰 눈금 간격과 작은 눈금의 간격을 각각 나타낸다. 수평 슬라이더는 큰 눈금 간격을 50으로, 작은 눈금 간격을 10으로 설정할 수 있다.
+
+label
+
+눈금에 새겨진 문자열을 label이라고 부른다. label의 출력 여부는 선택적이다.
+
+value
+
+value는 슬라이더의 값으로 손잡이가 이 값을 가리킨다. value는 손잡이를 이용하여 변경하거나 프로그램에서 변경할 수 있다.
+
+JSlider 컴포넌트의 생성
+
+![02a86dfa4cb24b88a809e093d8ad1e5](https://user-images.githubusercontent.com/60682087/149330749-719855c9-8e2e-4664-91a2-8a549998cdba.png)
+
+슬라이더의 모양 제어
+
+<pre><code>
+void setOrientation(int Orientation) // Orientation값에 따라 슬라이더의 방향을 수평, 수직 모양으로 변경한다.
+void setMinimum(int min) // 슬라이더의 minimum 값을 min 값으로 설정한다.
+void setMaximum(int max) // 슬라이더의 maximum 값을 max 값으로 설정한다.
+void setPaintLabels(boolean b) // b가 true이면 슬라이더의 label을 보이게 하고 b가 false이면 감춘다.
+void setPaintTicks(boolean b) // b가 true이면 슬라이더의 눈금을 보이게 하고 b가 false이면 감춘다.
+void setPaintTrack(boolean b) // b가 true이면 슬라이더의 트랙(track)을 보이게 하고 b가 false이면 감춘다.
+void setMinorTickSpacing(int space) // 슬라이더의 작은 눈금 간격(minorTickSpacing)을 space로 설정한다.
+void setMajorTickSpacing(int space) // 슬라이더의 큰 눈금 간격(majorTickSpacing)을 space로 설정한다.
+</pre></code>
+
+이들 메소드의 이름에서 set대신 get을 사용하면 해당 속성 값을 얻을 수 있다. 슬라이더의 값(value)을 알아내거나 수정하는 메소드는 다음과 같다.
+
+<pre><code>
+int getValue() // 슬라이더의 손잡이가 가리키는 값(value)을 리턴한다.
+int setValue(int n) // 슬라이더의 값(value)을 n으로 설정한다. 슬라이더의 손잡이는 새로운 value 값을 가리키도록 이동한다.
+</pre></code>
+
+JSlider와 Change 이벤트
+
+Change 이벤트는 스윙 이벤트로,JSlider의 값(value)이 바뀌면 발생한다. 구체적으로 사용자가 슬라이더의 손잡이 움직이는 동안 계속, 혹은 응용프로그램에서 JSliderdml setValue(int n)로 호출하여 value 값을 변경할 때 Change 이벤트가 발생한다. Change 이벤트를 처리하는 리스너 인터페이스는 ChangeListener로서 다음 메소드만 가지고 있으므로, Change 리스너를 만들기 위해서는 다음 메소드를 반드시 작성하여야 한다.
+
+![1527937244125073dd4eb7160280115](https://user-images.githubusercontent.com/60682087/149332771-2d097584-9395-46f5-84e7-c249fe564f53.png)
+
+Change 이벤트 정보를 가진 이벤트 객체는 ChangeEvent이며, javax.swing.event 패키지에 포함되어 있다.
+
 - 这个项目是我为了重新学习Java而做的项目（이 프로젝트는 내가 Java를 다시 공부하기위해서 만든 프로젝트입니다.）
