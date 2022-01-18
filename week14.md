@@ -107,7 +107,7 @@ Socket 클래스 생성자
 
 ![image](https://user-images.githubusercontent.com/60682087/149978502-fc3aa408-d08b-43de-901a-35423b37140d.png) 
 
-Socket 클래스 주요 
+Socket 클래스 주요 메소드
 
 ![image](https://user-images.githubusercontent.com/60682087/149978527-fa8edb40-bc05-4309-ab8b-1cab66ee05ab.png) 
 
