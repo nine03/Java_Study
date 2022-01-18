@@ -83,11 +83,109 @@ out.flush();
 
 스트림 out은 버퍼 입출력 스트림이므로 버퍼가 차기 전까지 데이터를 보내지 않기 떄문에 강제로 out.flush()를 호출하여 스트림 속의 데이터를 모두 즉각 전송한다.
 
+서버로부터 데이터 수신 
 
+```
+int x = in.read(); // 클라이언트로부터 한 개의 문자 수신
+```
 
+한 행의 문자열을 입력 받는 코드는 다음과 같다.
 
+```
+String line = in.readLine(); // 클라이언트로부터 한 행의 문자열 수신
+```
 
+in.readLine() 메소드는 '\n' 문자가 올 때까지 계속 일고 '\n'이 도착하면 그때까지 읽은 문자열을 리턴한다. 이 문자열 속에는 '\n'이 삽입되지 않는다.
 
+데이터 송수신 종료 
+
+```
+socket.close();
+```
+
+Socket 클래스 생성자
+![image](https://user-images.githubusercontent.com/60682087/149978502-fc3aa408-d08b-43de-901a-35423b37140d.png)
+![image](https://user-images.githubusercontent.com/60682087/149978527-fa8edb40-bc05-4309-ab8b-1cab66ee05ab.png)
+
+ServerSocket 클래스, 서버 소켓
+
+ServerSocket 클래스는 서버 소켓을 구현한다. ServerSocket 클래스는 java.net 패키지에 포함되어 있으며 ServerSocket 클래스의 생성자와 메소드는 같다. ServerSocket은 클라이언트로부터 연결 요청을 기다리는 목적으로 만 사용되며, 서버가 클라이언트의 연결 요청을 수락하면 Socket 객체를 별도로 생성하고, 이 Socket 객체가 클라이언트와 데이터를 주고 받는다. ServerSocket은 데이터의 송수신에 사용되지 않는다.
+
+서버 소켓 생성
+
+```
+ServerSocket listener = new ServerSocket(9999);
+```
+
+클라이언트로부터 접속 대기
+
+SeverSocket 클래스의 accept() 메소드를 이용하여 클라이언트로부터의 연결 요청을 기다린다. accept() 메소드가 연결을 수락하면 다음과 같이 Socket 객체를 하나 별도로 생성하여 리턴한다.
+
+```
+Socket socket = listener.accept();
+```
+
+네트워크 입출력 스트림 
+
+클라이언트로 데이터를 주고 받기 위한 스트림 객체는, ServerSocket의 accept() 메소드로부터 얻은 socket 객체의 getInputStream()과 getOutputStream() 메소드를 이용하여 얻어낸다.
+
+```
+BufferedReader in = new BufferedReader(new InputStreamReader(Socket.getInputStream()));
+BufferedReader out = new BufferedWriter(new OutputStreamWriter(Socket.getOutputStream()));
+```
+
+버퍼 입출력 스트림 in, out을 이용하여 클라이언트와 데이터를 주고받으면 된다. in, out은 모두 문자만 입출력하는 스트림이다.
+
+클라이언트로부터 데이터 수신 
+
+앞서 만들어진 버퍼 스트림 in을 이용하여 클라이언트로부터 문자 데이터를 수신할 수 있다.
+
+```
+int x = in.read(); // 클라이언트로부터 한 개의 문자 수신
+```
+
+한 행의 문자열을 입력받는 코드는 다음과 같다.
+
+```
+String line = in.readLine(); // 클라이언트로부터 한 행의 문자열 수신
+```
+
+in.readLine() 메소드는 '\n' 문자가 올 때까지 계속 일고 '\n'이 도착하면 그때까지 읽은 문자열은 리턴한다. 이문자열 속에는 '\n'이 삽입되지 않는다. 현재 서버에서 라인 단위로 읽이 때문에 클라이언트에서는 송신하는 데이터의 끝에 '\n' 을 덧붙여 보내야 한다.
+
+클라이언트로 데이터 전송 
+
+```
+out.write("Hi, elient" + "\n");
+out.flush();
+```
+
+"\n"을 덧붙여 보내는 이유는 클라이언트 쪽에서 라인 단위('\n' 문자가 올 때까지 한 번에 읽는)로 수신한다고 가정하였기 때문이다. out.flush()를 호출하면 버퍼 스트림 속의 데이터를 모두 즉각 클라이언트로 전송한다.
+
+데이터 송수신 종료
+
+```
+soket.close();
+```
+
+서버 응용프로그램 종료 
+
+더 이상 클라이언트의 접속을 받지 않고 서버 응용프로그램을 종료하고자 하는 경우 다음과 같이 ServerSocket을 종료시킨다.
+
+```
+serverSocket.close();
+```
+
+serverSocket 클래스의 주요 생성자
+
+![image](https://user-images.githubusercontent.com/60682087/149981499-a43542b6-aaf1-4470-b90e-93af7f923519.png)
+
+serverSocket 클래스의 주요 메소드 
+
+![image](https://user-images.githubusercontent.com/60682087/149981555-1c1a3d17-d336-48e6-85a8-b036497e9538.png)
+
+![캡처3](https://user-images.githubusercontent.com/60682087/149981761-a9915a88-16e3-4c41-abc7-f0c16baf1ac6.JPG)
+
+![캡처4](https://user-images.githubusercontent.com/60682087/149981933-8c91e904-dcb0-49d8-8499-25d4f765d8c2.JPG)
 
 
 - 这个项目是我为了重新学习Java而做的项目（이 프로젝트는 내가 Java를 다시 공부하기위해서 만든 프로젝트입니다.）
