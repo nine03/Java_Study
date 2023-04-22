@@ -191,5 +191,4 @@ serverSocket 클래스의 주요 메소드
 
 ![캡처4](https://user-images.githubusercontent.com/60682087/149981933-8c91e904-dcb0-49d8-8499-25d4f765d8c2.JPG)
 
-
 - 这个项目是我为了重新学习Java而做的项目（이 프로젝트는 내가 Java를 다시 공부하기위해서 만든 프로젝트입니다.）
