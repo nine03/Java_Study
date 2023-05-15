@@ -283,7 +283,6 @@ JTextField tf = new JTextField();
 tf.setEditable(false); // 텍스트필드 창에 입력하거나 수정 불가
 ```
 
-  
 입력 창에 문자열 출력   
 
 다음 코드는 텍스트필드 입력 창에 있는 문자열을 "hello"로 수정하여 출력한다.
